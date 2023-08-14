@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Sample HTML Form</title>
+  <style>
+    </style>
+</head>
+<body>
+  <h2>Get form value</h2>
+
+
+<form id="MyForm" onsubmit="return false" method="post">
+
+  <label for="name">Name:</label><br>
+    <input type="text" id="name" name="name" required><br>
+
+    <label for="email">Email:</label><br>
+    <input type="email" id="email" name="email" required><br>
+
+    <label for="message">Message:</label><br>
+    <textarea id="message" name="message" required></textarea><br>
+
+    <!-- <input type="submit" value="Submit" onclick="showAlert()"><br> -->
+
+    <input type="submit" value="Submit" onclick="getFormValue()"><br>
+
+  </form>
+  <script type="text/javascript">
+
+     function getFormValue(){
+      console.log(document.getElementById('name').value);
+      console.log(document.getElementById('email').value);
+      console.log(document.getElementById('message').value);
+
+      let messageText = document.getElementById('message').value;
+
+      if (messageText.length > 15) {
+        window.alert("Thanks for full form entry!");
+      }else{
+        window.alert("Please fill full form entry!");
+      }
+      
+    }
+
+    </script>
+</body>
+</html>

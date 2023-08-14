@@ -1,0 +1,67 @@
+<script>
+	// let n = prompt("Enter the value of n")
+	// n= Number.parseInt(n)
+	 function sum(a,b){
+	 	console.log("Done")
+		return a+b;
+	}
+let a=5
+let b=6
+	console.log (sum(a,b))
+
+// ------------------------------------------------
+
+	const total = (p,q)=>{
+		return p+q
+	}
+	console.log(total(5,5))
+
+//-------------------------------------------------
+
+  const hello = ()=>{
+  	console.log("i am good")
+  	return ("hi")
+  }	
+  console.log(hello())
+        // or
+  let v = hello()
+  console.log(v)
+</script>
+<!-- ------------------------------------- -->
+<script>
+
+	// usinf for loop
+
+	let marks = {
+      anita: 20,
+      parul: 50,
+      kamal: 80,
+      komal: 90,
+	}
+	for(i=0; i<Object.keys(marks).length; i++)
+		console.log (Object.keys(marks)[i] +" "+ marks[Object.keys(marks)[i]])
+
+   // or using for in loop
+   
+   for(let keys in marks)
+		console.log (keys +" "+ marks[keys])
+
+
+</script>
+<!-- -------------------------------------------- -->
+<!-- <script>
+	let correct_no = 20
+	let i 
+	while(i!=correct_no){
+		i = prompt("Enter a number")
+		console.log("Try again")
+  }
+console.log("You are entered a correct no")
+</script> -->
+<!-- -------------------------------------------- -->
+<script>
+	const mean = (a,b,c,d)=>{
+    return (a+b+c+d)/4
+	}
+	console.log (mean(1,2,3,4))
+</script>

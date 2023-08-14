@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style type="text/css">
+    #loading-spinner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.8);
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 3px solid #ccc;
+  border-top-color: #333;
+  border-radius: 50%;
+  animation: spinner-rotate 1s infinite linear;
+}
+
+@keyframes spinner-rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+</style>
+
+</head>
+
+<body>
+
+    <div id="loading-spinner" >
+        <div class="spinner"></div>
+    </div>
+
+
+    <script>
+
+        showLoadingSpinner();
+        // Function to show the loading spinner
+function showLoadingSpinner() {
+  document.getElementById("loading-spinner").style.display = "block";
+}
+
+// Function to hide the loading spinner
+function hideLoadingSpinner() {
+  document.getElementById("loading-spinner").style.display = "none";
+}
+
+// Event listener for page load
+window.addEventListener("load", function() {
+  hideLoadingSpinner();
+   
+});
+
+    </script>
+
+</body>
+</html>
+
+
+let preloader =  document.getElementById('loader')
+ function myFunction(){
+  preloader.style.display= 'none';
+ }
+
+ // window.onload = function(){
+ //        //hide the preloader
+ //        document.querySelector("#loader").style.display = "none";
+ //    }
+
+// document.onreadystatechange = function () {
+//             if (document.readyState !== "complete") {
+//                 document.querySelector(
+//                     "body").style.visibility = "hidden";
+//                 document.querySelector(
+//                     "#loader").style.visibility = "visible";
+//             } else {
+//                 document.querySelector(
+//                     "#loader").style.display = "none";
+//                 document.querySelector(
+//                     "body").style.visibility = "visible";
+//             }
+//         };

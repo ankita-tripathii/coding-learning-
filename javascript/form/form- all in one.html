@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Sample HTML Form</title>
+  <style>
+/*    #display_image{*/
+/*      width: 375px;*/
+/*      height: 211px;*/
+/*      border: 1px solid black;*/
+/*      background-position: center;*/
+/*    }*/
+
+    .container {
+  position: relative;
+  width: 25%;
+}
+
+.image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: .5s ease;
+  background-color: #008CBA;
+}
+
+/*.container:hover .overlay {*/
+/*  opacity: 0.7;*/
+/*}*/
+
+.hovertext {
+  color: white;
+  font-size: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+  </style>
+</head>
+<body>
+  <h2>Sample HTML Form</h2>
+
+  <form id="MyForm" onsubmit="return false">
+
+    <label for="name">Name:</label><br>
+    <input type="text" id="name" name="name" required><br>
+
+    <label for="email">Email:</label><br>
+    <input type="email" id="email" name="email" required><br>
+
+    <label for="message">Message:</label><br>
+    <textarea id="message" name="message" required></textarea><br>
+
+    
+    <label for="image">Image:</label><br>
+    <input type="file" name="image" accept="image/*" onchange="loadFile(event)" required><br>
+    <p><img id="output" width="300"/></p>
+
+    <label for="voting">Voting Rights:</label><br>
+    <input class="voting" type="radio" name="voting" value="yes"> Yes I am 18 +
+    <input class="voting" type="radio" name="voting" value="no"> No I am not eligible<br>
+
+    <label for="gender">Gender:</label><br>
+    <input class="gender" type="radio" name="gender" value="male"> Male
+    <input class="gender" type="radio" name="gender" value="female"> Female<br>
+
+    
+
+
+
+    
+    <!-- <input type="submit" value="Submit" onclick="showAlert()"><br> -->
+
+    <input type="submit" value="Submit" onclick="getFormValue()"><br>
+
+
+  </form>
+
+  <div class="container">
+    <img class="image" src="images/1.jpeg" width="300" height="300" onmouseover="showText()" onmouseout="hideText()"/>
+    <div class="overlay">
+    <div class="hovertext">Ankita Tripathi</div>
+  </div>
+    </div>
+
+    <div class="container">
+    <img class="image" src="images/2.jpeg" width="300" height="300" onmouseover="showText()" onmouseout="hideText()" />
+    <div class="overlay">
+    <div class="hovertext">Ankita Tripathi</div>
+  </div>
+    </div>
+
+    <div class="container">
+    <img class="image" src="images/3.jpeg" width="300" height="300" onmouseover="showText()" onmouseout="hideText()"/>
+    <div class="overlay">
+    <div class="hovertext">Ankita Tripathi</div>
+  </div>
+  </div>
+
+
+
+    <script type="text/javascript">
+     
+     //  function showText() {
+     //  document.getElementByByClassName("container").style.display = "block";
+     // }
+
+     // function hideText() {
+     //  document.getElementByByClassName("comtainer").style.display = "none";
+     // }
+
+
+      function consoleData(event){
+        console.log(event);
+        console.log("click on voiting radio button");
+
+      }
+
+      function mouseFunction(event){
+        console.log("mouse over on Voting Radio Button");
+      }
+
+      let element = document.getElementsByClassName("voting")[0];
+      document.getElementsByClassName("voting")[0].addEventListener("click", consoleData);
+      element.addEventListener("mouseover", mouseFunction);
+
+      window.addEventListener("resize", function(){
+        document.getElementById("message").value = "resizing window!!!"; // why value instead of innerHtml
+      });
+
+
+      //function getFormValue(){
+      //window.alert("enter username and email!");
+     //}
+
+    //upload image 
+      
+
+    // function expression
+    // read arrow funtions
+      var loadFile = function(event) {
+      const image = document.getElementById('output');
+      image.src=URL.createObjectURL(event.target.files[0]);
+      };
+
+
+     // print name email in console on submit 
+
+     function getFormValue(){
+      console.log(document.getElementById('name').value);
+      console.log(document.getElementById('email').value);
+
+      var messagevalue = (document.getElementById('message').value);
+      var regex = /\d/; // Regex to check for numbers
+
+      if (regex.test(messagevalue)) {
+        alert("Numbers are not allowed in the message textarea!");
+        console.log(message.value);
+        return;
+     }
+     
+
+
+     // gender radio button and voting radio button
+
+      var voting = document.querySelector("input[type=radio][class=voting]:checked")
+      if(voting){
+      console.log(voting.value);
+      }
+      
+      var gender = document.querySelector("input[type=radio][class=gender]:checked");
+      if(gender){
+      console.log(gender.value);
+      }
+
+      //const myObj = {name:"Ankita", email:"ankitat@gmail.com"};
+
+      //console.log(myObj);
+    }
+  </script>
+</body>
+</html>

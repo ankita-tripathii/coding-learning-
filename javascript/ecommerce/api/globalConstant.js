@@ -1,0 +1,1 @@
+ var selectedIndex = -1;

@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <title >Product Detail</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+
+
+  <!-- Add icon library -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<style type="text/css">
+
+  #more {display: none;}
+
+  .rating-color {
+  color:#fbc634;
+ }
+
+.loader-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #FAEBD7;
+    z-index: 1;
+}
+
+
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+</style>
+<body>
+
+
+  <!-- ---------------------------------------------------------------------------------------------- --> 
+
+  <div id="loader" class="loader-bg">
+  <div class="spinner-border text-info position-absolute top-50 start-50"style="width: 6rem; height: 6rem;" role="status">
+  <span class="visually-hidden">Loading...</span>
+  </div>
+ </div>
+
+ <!-- style="display: none;" -->
+ <div class="container" id="content" >
+
+   <div class="row">
+      <nav class="navbar bg-body-tertiary navbar-expand-lg bg-dark border-bottom border-bottom-dark " data-bs-theme="dark">
+        <div class="col-lg-4 col-4 ">
+          <div class="col-lg-8 col-8 container-fluid"><a class="navbar-brand" href="#">
+            <img src="images/logo.png" alt="Logo" width="30" height="24" class="d-inline-block text-start"><span>   </span><span style="color:white;"class="align-middle">Buyonline</span></a>
+          </div>
+        </div>
+
+        <div class="col-lg-2 col-2">
+        </div>
+
+        <div class="col-lg-6 col-6"id="navbarNav row">
+          <div class="row navbar-nav">
+            <div class="col-lg-2 col-2 " >
+              <li class="nav-item">
+                <a class="nav-link"  href="#"><span style="color:white;">Home</span></a>
+              </li>
+            </div>
+            <div class="col-lg-3 col-3">
+              <li class="nav-item">
+                <a class="nav-link" href="#"><span style="color:white;">Products</span></a>
+              </li>
+            </div>
+            <div class="col-lg-7 col-7">
+              <li class="nav-item">
+                <span id="name-result" class="nav-link" style="color:white;"></span><span id="email-result" class="nav-link" style="color:white;"></span>
+              </li>
+            </div>
+          </div>
+          
+        </div>
+      </nav>
+    </div>
+   
+   <div class="row "> 
+    <div class="col-lg-5 col-12"> 
+      <div style="height:80%; width:80%">
+          <img id="product-image" class="rounded float-lg-start  w-100 " style="height:100%; width:100%"  alt="...">
+      </div>
+    </div>
+
+    <!-- Modal -->
+    <div id="myModal" class=" modal">
+
+      <!-- Modal content -->
+      <div class="row">
+        <div class=" modal-content">
+          <div class=" modal-header">
+            <span class="close">&times;</span>
+          </div>
+          <div class="modal-body">
+           <div class="row "> 
+            <div class="col-lg-3 col-12"> 
+              <div style="height:80%; width:100%">
+                <img id="modal-image"class="rounded float-lg-start" style="height:100%; width:100%"  alt="...">
+              </div>
+            </div>
+            <div class="col-lg-7 col-12 ">
+              <div class="row">
+                <div  class="col-lg-12 col-12 font-weight-bold" style="text-align:left;"><h3 id="modal-title"></h3></div>
+              </div>
+
+              <div class="row ">
+                <div class="col-lg-7 col-7" style="text-align:left;"><span class="fw-bold align-middle">Product Rating: <span id="modal-rating"class="small-ratings">
+        <!-- <i class="fa fa-star rating-color"></i>
+        <i class="fa fa-star rating-color"></i>
+        <i class="fa fa-star rating-color"></i>
+        <i class="fa fa-star"></i>
+        <i class="fa fa-star"></i> -->
+      </span></span>             
+    </div>
+    <div class="col-lg-5 col-5" style="text-align:left;"><span  class="fw-bold align-middle">Price:</span><span> </span><span  id="modal-price" class="align-middle"></span></div>
+  </div>
+
+  <div class="row">
+    <div id="modal-description"class="col-lg-12 col-12" style="text-align:left;">
+      <!-- <p id="desc">When choosing a solid-wood dining table there’re many different things to consider, from what type of wood to choose, to the finish you should apply. This will completely<span id="dots">...</span><span id="more"> depend on the look you’re trying to achieve in your space, but with so many options out there it can be hard to know where to start. We’ve pulled together everything you should know before buying a wooden dining table to give you a helping hand.</span><span class="fw-medium fs-6 text-primary "type="button" onclick="ReadmoreFunction()" id="moreBtn">Read more</span></p> -->
+    </div>
+  </div><br>
+  <div class="row">
+    <div class="col-lg-3 col-5" style="text-align:left;"><button type="button" class="btn btn-dark">Add To Cart</button></div>
+
+    <div class="col-lg-3 col-5" style="text-align:left;"><button type="button" class="btn btn-outline-secondary"><i class="fa fa-solid fa-heart" style="color: #fa0000;"></i>Favourite</button></div>
+  </div>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+    <div class="col-lg-7 col-12">
+      <div class="row">
+        <div  class="col-lg-12 col-12 font-weight-bold" style="text-align:left;"><h3 id="product-title"></h3></div>
+      </div>
+
+      <div class="row ">
+        <div class="col-lg-7 col-7" style="text-align:left;"><span class="fw-bold align-middle">Product Rating: <span id="product-rating"class="small-ratings">
+        <!-- <i class="fa fa-star rating-color"></i>
+        <i class="fa fa-star rating-color"></i>
+        <i class="fa fa-star rating-color"></i>
+        <i class="fa fa-star"></i>
+        <i class="fa fa-star"></i> -->
+      </span></span>             
+     </div>
+     <div class="col-lg-5 col-5" style="text-align:left;"><span  class="fw-bold align-middle">Price:</span><span> </span><span  id="product-price" class="align-middle"></span></div>
+   </div>
+
+   <div class="row">
+    <div id="product-description"class="col-lg-12 col-12" style="text-align:left;">
+      <!-- <p id="desc">When choosing a solid-wood dining table there’re many different things to consider, from what type of wood to choose, to the finish you should apply. This will completely<span id="dots">...</span><span id="more"> depend on the look you’re trying to achieve in your space, but with so many options out there it can be hard to know where to start. We’ve pulled together everything you should know before buying a wooden dining table to give you a helping hand.</span><span class="fw-medium fs-6 text-primary "type="button" onclick="ReadmoreFunction()" id="moreBtn">Read more</span></p> -->
+    </div>
+  </div><br>
+  <div class="row">
+    <div class="col-lg-3 col-5" style="text-align:left;"><button type="button" class="btn btn-dark">Add To Cart</button></div>
+
+    <div class="col-lg-3 col-5" style="text-align:left;"><button type="button" class="btn btn-outline-secondary"><i class="fa fa-solid fa-heart" style="color: #fa0000;"></i>Favourite</button></div>
+  </div>
+</div>
+</div>
+
+</div><br>
+
+
+ <!-- ---------------------------------------------------------------------------------------------      -->
+  
+
+<script type="text/javascript">
+
+  
+
+// Simulating data preloading delay (replace with your actual data loading logic)
+function preloadData(callback) {
+  setTimeout(callback, 2000);
+}
+
+// Show page content after preloading
+function showPageContent() {
+  document.getElementById("loader").style.display = "none";
+  document.getElementById("content").style.display = "block";
+}
+
+// Preload data and display content
+preloadData(function() {
+  // Data preloaded, now show the page content
+  showPageContent();
+});
+
+
+var currentURL = window.location.href;
+
+// Get the product ID (you can replace this with your own logic to retrieve the ID)
+var productId =product_detail(1);
+
+// Append the product ID to the current URL
+var newURL = currentURL + "?productId=" + productId;
+
+// Change the URL without reloading the page
+history.pushState(null, null, newURL);
+
+
+ 
+
+function product_detail(productId) {
+  fetch('https://fakestoreapi.com/products/'+productId)
+            .then(res=>res.json())
+            .then(json=> {
+              console.log(json);
+
+              let productImage = document.getElementById("product-image");
+              productImage.src = json["image"];
+
+              let modalImage = document.getElementById("modal-image");
+              modalImage.src = json["image"];
+
+              let producttitle = document.getElementById("product-title")
+              producttitle.innerText = json["title"];
+
+               let modaltitle = document.getElementById("modal-title")
+              modaltitle.innerText = json["title"];
+
+              let productrating = document.getElementById("product-rating")
+              productrating.innerText = json["rating"]["rate"];
+
+              let modalrating = document.getElementById("modal-rating")
+              modalrating.innerText = json["rating"]["rate"];
+
+              let productprice = document.getElementById("product-price")
+              productprice.innerText = json["price"];
+
+              let modalprice = document.getElementById("modal-price")
+              modalprice.innerText = json["price"];
+
+              let productdescription = document.getElementById("product-description")
+              productdescription.innerText = json["description"];
+
+              let modaldescription = document.getElementById("modal-description")
+              modaldescription.innerText = json["description"];
+
+          })
+
+}
+
+
+
+// Get the modal
+var modal = document.getElementById("myModal");
+
+// Get the button that opens the modal
+var btn = document.getElementById("product-image");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal 
+btn.onclick = function(){
+  modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+
+// Set Item
+localStorage.setItem("fullname","Ankita Tripathi");
+localStorage.setItem("email-id","123@gmail.com");
+// Retrieve
+document.getElementById("name-result").innerHTML = localStorage.getItem("fullname");
+document.getElementById("email-result").innerHTML = localStorage.getItem("email-id");
+
+sessionStorage.setItem("fullname","Ankita Tripathi");
+sessionStorage.setItem("email-id","123@gmail.com");
+// Retrieve
+document.getElementById("name-result").innerHTML = sessionStorage.getItem("fullname");
+document.getElementById("email-result").innerHTML = sessionStorage.getItem("email-id");
+
+
+  // // GET API Call
+  // function product_detail(productId) {
+
+  //   // Fetch, Promise ?
+  //   fetch('https://fakestoreapi.com/products/'+productId)
+  //           .then(res=>res.json())
+  //           .then(json=> {
+  //             console.log(json);
+  //             let productImage = document.getElementById("product-image");
+  //             productImage.src = json["image"];
+  //             let rating = json["rating"]["rate"];
+  //             console.log(rating);
+
+  //         })
+    
+  // }
+
+  // function to save data to backend using POST API call
+  
+
+
+
+
+
+//// when user click on readmore button...
+
+  function ReadmoreFunction() {
+    let dots = document.getElementById("dots");
+    let moreText = document.getElementById("more");
+    let btnText = document.getElementById("moreBtn");
+
+    if (dots.style.display === "none") {
+      dots.style.display = "inline";
+      btnText.innerHTML = "Read more"; 
+      moreText.style.display = "none";
+    } else {
+      dots.style.display = "none";
+      btnText.innerHTML = "Read less"; 
+      moreText.style.display = "inline";
+    }
+  }
+</script>
+ 
+</body>
+</html>
+
+<!-- Page Loading div until the page has finished loading? 
+
+// showLoadingSpinner();
+//        // Function to show the loading spinner
+// function showLoadingSpinner() {
+//   document.getElementById("loader").style.display = "block";
+// }
+
+// // Function to hide the loading spinner
+// function hideLoadingSpinner() {
+//   document.getElementById("loader").style.display = "none";
+// }
+
+// // Event listener for page load
+// window.addEventListener("load", function() {
+//   hideLoadingSpinner();
+   
+// });
+ -->

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>myTable</title>
+  <style>
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    th, td {
+      border: 1px solid black;
+      padding: 8px;
+      text-align: left;
+    }
+    /*for hover efect*/
+    #hide {
+  display: none;
+}
+    
+#myTable:hover + div {
+  color: red;
+  display: block;
+}
+
+  </style>
+</head>
+<body>
+  <table id="myTable">
+    <tr>
+      <th>Column 1</th>
+      <th>Column 2</th>
+      <th>Column 3</th>
+    </tr>
+    <tr>
+      <td>Row 1, Cell 1</td>
+      <td>Row 1, Cell 2</td>
+      <td>Row 1, Cell 3</td>
+    </tr>
+    <tr>
+      <td>Row 2, Cell 1</td>
+      <td>Row 2, Cell 2</td>
+      <td>Row 2, Cell 3</td>
+    </tr>
+
+     <tr>
+      <td>Row 3, Cell 1</td>
+      <td>Row 3, Cell 2</td>
+      <td>Row 3, Cell 3</td>
+    </tr>
+    <!-- Add more rows as needed -->
+   </table>
+
+   <div id="hide">Ankita Tripathi</div>
+
+    <button onclick="myFunction()">Try it</button>
+    <button onclick="myFunction1()">Try it 2</button>
+
+    <script>
+      function myFunction() {
+      var x = document.getElementById("myTable").rows[1].cells;
+      x[2].innerHTML += "NEW CONTENT";
+      }
+
+
+       function myFunction1() {
+       var x = document.getElementById("myTable").rows[2].cells;
+       x[2].innerHTML = "NEW CONTENT";
+      }
+
+   </script>
+
+   <!-- <div class="myDIV">My Name
+    <div id="hide">Ankita Tripathi</div>
+   </div> -->
+       
+  </body>
+</html>

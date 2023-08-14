@@ -1,0 +1,134 @@
+const server_data ={
+         "data": [
+{
+	"category": "tshirt",
+	"detail": {
+		"id": "1",
+		"name": "Red",
+		"price": 12,
+	    "size": "M",
+	}
+},
+{
+	"category": "pant",
+	"detail": {
+		"id": "2",
+		"name": "Black",
+		"price": 13
+	}
+},
+{
+	"category": "trouser",
+	"detail": {
+		"id": "3",
+		"name": "White",
+		"price": 14
+	}
+},
+{
+	"category": "top",
+	"detail": {
+		"id": "4",
+		"name": "Blue",
+		"price": 15
+	}
+},
+{
+	"category": "tshirt",
+	"detail": {
+		"id": "5",
+		"name": "Black",
+		"price": 16
+	}
+},
+{
+	"category": "top",
+	"detail": {
+		"id": "6",
+		"name": "Red",
+		"price": 17
+	}
+},
+{
+	"category": "pant",
+	"detail": {
+		"id": "7",
+		"name": "White",
+		"price": 18
+	}
+},
+{
+	"category": "trouser",
+	"detail": {
+		"id": "8",
+		"name": "Gray",
+		"price": 19
+	}
+},
+{
+	"category": "top",
+	"detail": {
+		"id": "9",
+		"name": "Pink",
+		"price": 20
+	}
+},
+
+{
+	"category": "top",
+	"detail": {
+		"id": "10",
+		"name": "skyblue",
+		"price": 21
+	}
+},
+{
+	"category": "jeans",
+	"detail": {
+		"id": "11",
+		"name": "Black",
+		"price": 22
+	}
+},
+{
+	"category": "dress",
+	"detail": {
+		"id": "12",
+		"name": "Floral",
+		"price": 23
+	}
+},
+{
+	"category": "frock",
+	"detail": {
+		"id": "13",
+		"name": "Black",
+		"price": 24
+	}
+},
+{
+	"category": "frock",
+	"detail": {
+		"id": "14",
+		"name": "Floral",
+		"price": 25
+	}
+},
+{
+	"category": "danim",
+	"detail": {
+		"id": "15",
+		"name": "Blue",
+		"price": 26
+	}
+},
+{
+	"category": "western wear",
+	"detail": {
+		"id": "16",
+		"name": "Floral",
+		"price": 27
+	}
+},
+
+]}

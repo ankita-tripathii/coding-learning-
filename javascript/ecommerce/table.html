@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Tabular Data</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style>
+
+    #myInput {
+  background-image: url('images/searchicon.png'); /* Add a search icon to input */
+  background-position: 10px 7px; /* Position the search icon */
+  background-repeat: no-repeat; /* Do not repeat the icon image */
+  width: 100%; /* Full-width */
+  font-size: 16px; /* Increase font-size */
+  padding: 12px 20px 12px 40px; /* Add some padding */
+  border: 1px solid #ddd; /* Add a grey border */
+  margin-bottom: 12px; /* Add some space below the input */
+  }
+
+    ul.breadcrumb {
+  padding: 8px 8px;
+  list-style: none;
+  background-color: #eee;
+  
+ }
+ ul.breadcrumb li {
+  display: inline;
+  font-size: 18px;
+ }
+ ul.breadcrumb li+li:before {
+  padding: 4px;
+  color: black;
+  content: "/\00a0";
+ }
+ ul.breadcrumb li a {
+  color: #0275d8;
+  text-decoration: none;
+ }
+ ul.breadcrumb li a:hover {
+  color: #01447e;
+  text-decoration: underline;
+ }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    td {
+      border: 1px solid black;
+      padding: 5px;
+      text-align: left;
+    }
+    
+    th{
+      border: 1px solid white;
+      background-color: black;
+      padding: 5px;
+      color: white;
+      text-align: left;
+      cursor: pointer
+    }
+
+    .hoverrow tr:hover {background-color: #E0E0E0;}
+
+   .productName{
+    cursor: pointer;
+   }
+   
+   #button {
+  background-color: #04AA6D;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 10%;
+  }
+    .pagination a {
+  color: black;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+  transition: background-color .3s;
+  position: relative;
+  left: 600px ;
+  cursor: pointer;
+ }
+
+.pagination a.active {
+  background-color: dodgerblue;
+  color: white;
+ }
+
+.pagination a:hover:not(.active) {background-color: #ddd;}
+
+  </style>
+</head>
+<body>
+
+  <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search product names..">
+  
+  <ul class="breadcrumb">
+  <li><a href="index.html">  Index</a></li>
+  <li> Product Table</li>
+  <!-- <li><a href="#">table_1</a></li> -->
+  </ul> 
+
+ <i class="fa-sharp fa-light fa-house"></i> 
+
+  <table id="data-table" class="hoverrow">
+    <tr>
+      <th onclick="sortTable(0)" scope="col">Name</th>
+      <th  scope="col">Description</th>
+      <th  scope="col">Price</th>
+      <th  scope="col">Image</th>
+    </tr>
+
+  </table>
+
+  <script src="api/data.json">
+  </script>
+
+  <script src="api/globalConstant.js">
+  </script>
+
+  <script src="js/product_table.js">
+
+ </script>
+
+ <script src="js/sorting.js">
+
+ </script>
+
+<div class="pagination" >
+  <a href="#">&laquo;</a>
+  <a class= "active" href="table.html" onclick="getDataByPage(1)">1</a>
+  <a href="#" onclick="getDataByPage(2)">2</a>
+  <a href="#">&raquo;</a>
+</div>
+
+</body>
+</html>

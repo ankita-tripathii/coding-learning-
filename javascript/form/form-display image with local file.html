@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Sample HTML Form</title>
+  <style>
+    #display_image{
+     width: 375px;
+     height: 211px;
+     border: 1px solid black;
+     background-position: center;
+    }
+
+    </style>
+</head>
+<body>
+  <h2>Display image</h2>
+
+  <form id="MyForm" onsubmit="return false">
+
+    <label id="image">Image:</label><br>
+    <input type="file" name="image" accept="image/*" onchange="loadFile(event)" required multiple="multiple"><br>
+    <p><img id="display_image" width="300"/></p> 
+
+
+    <input type="submit" value="Submit" onclick="getFormValue()"><br>
+
+
+    </form>
+    <script type="text/javascript">
+
+      var loadFile = function(event) {
+      const image = document.getElementById('display_image');
+      console.log(event.target.files);
+      image.src=URL.createObjectURL(event.target.files[0]);
+      };
+
+      function getFormValue(){
+        console.log(document.getElementById('display_image').value);
+    }
+      </script>
+</body>
+</html>

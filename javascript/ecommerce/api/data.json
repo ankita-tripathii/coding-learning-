@@ -1,0 +1,123 @@
+const server_data = {
+	"data": [
+ {
+        "name": "Chair",
+        "description": "hgbdkgjld,mzx ",
+        "price": "10",
+        "image": "https://www.ikea.com/in/en/images/products/stefan-chair-brown-black__0727320_pe735593_s5.jpg?f=s"
+ },
+ {
+        "name": "Table",
+        "description": "hgbdkgjld,mzx",
+        "price": "20",
+        "image": "https://www.ikea.com/in/en/images/products/stefan-chair-brown-black__0727320_pe735593_s5.jpg?f=s"
+ },
+ {
+        "name": "Mirror",
+        "description": "hgbdkgjld,mzx",
+        "price": "30",
+        "image": "https://www.ikea.com/in/en/images/products/stefan-chair-brown-black__0727320_pe735593_s5.jpg?f=s"
+ },
+ {
+        "name": "Office chair",
+        "description": "hgbdkgjld,mzx",
+        "price": "40",
+        "image": "https://www.ikea.com/in/en/images/products/stefan-chair-brown-black__0727320_pe735593_s5.jpg?f=s"
+ },
+ {
+        "name": "Writing Desk",
+        "description": "hgbdkgjld,mzx",
+        "price": "50",
+        "image": "https://www.ikea.com/in/en/images/products/stefan-chair-brown-black__0727320_pe735593_s5.jpg?f=s"
+ },
+ {
+        "name": "Table lamp",
+        "description": "hgbdkgjld,mzx",
+        "price": "60",
+        "image": "https://www.ikea.com/in/en/images/products/stefan-chair-brown-black__0727320_pe735593_s5.jpg?f=s"
+ },
+ {
+        "name": "Sideboard",
+        "description": "hgbdkgjld,mzx",
+        "price": "70",
+        "image": "https://www.ikea.com/in/en/images/products/stefan-chair-brown-black__0727320_pe735593_s5.jpg?f=s"
+ },
+ {
+        "name": "Sofa bed",
+        "description": "hgbdkgjld,mzx",
+        "price": "80",
+        "image": "https://www.ikea.com/in/en/images/products/stefan-chair-brown-black__0727320_pe735593_s5.jpg?f=s"
+ },
+ {
+        "name": "Sleeper sofa",
+        "description": "hgbdkgjld,mzx",
+        "price": "90",
+        "image": "https://www.ikea.com/in/en/images/products/stefan-chair-brown-black__0727320_pe735593_s5.jpg?f=s"
+ },
+ {
+        "name": "Stool",
+        "description": "hgbdkgjld,mzx",
+        "price": "100",
+        "image": "https://www.ikea.com/in/en/images/products/stefan-chair-brown-black__0727320_pe735593_s5.jpg?f=s"
+ },
+ {
+        "name": "Wheelchair",
+        "description": "hgbdkgjld,mzx",
+        "price": "110",
+        "image": "https://www.ikea.com/in/en/images/products/stefan-chair-brown-black__0727320_pe735593_s5.jpg?f=s"
+ },
+ {
+        "name": " Bench",
+        "description": "hgbdkgjld,mzx",
+        "price": "120",
+        "image": "https://www.ikea.com/in/en/images/products/stefan-chair-brown-black__0727320_pe735593_s5.jpg?f=s"
+ },
+ {
+        "name": "High chair",
+        "description": "hgbdkgjld,mzx",
+        "price": "130",
+        "image": "https://www.ikea.com/in/en/images/products/stefan-chair-brown-black__0727320_pe735593_s5.jpg?f=s"
+ },
+ {
+        "name": "Director chair",
+        "description": "hgbdkgjld,mzx",
+        "price": "140",
+        "image": "https://www.ikea.com/in/en/images/products/stefan-chair-brown-black__0727320_pe735593_s5.jpg?f=s"
+ },
+ {
+        "name": "Toilet paper",
+        "description": "hgbdkgjld,mzx",
+        "price": "150",
+        "image": "https://www.ikea.com/in/en/images/products/stefan-chair-brown-black__0727320_pe735593_s5.jpg?f=s"
+ },
+ {
+        "name": "Soap",
+        "description": "hgbdkgjld,mzx",
+        "price": "160",
+        "image": "https://www.ikea.com/in/en/images/products/stefan-chair-brown-black__0727320_pe735593_s5.jpg?f=s"
+ },
+ {
+        "name": "Towel",
+        "description": "hgbdkgjld,mzx",
+        "price": "170",
+        "image": "https://www.ikea.com/in/en/images/products/stefan-chair-brown-black__0727320_pe735593_s5.jpg?f=s"
+ },
+ {
+        "name": "Liquid soap",
+        "description": "hgbdkgjld,mzx",
+        "price": "180",
+        "image": "https://www.ikea.com/in/en/images/products/stefan-chair-brown-black__0727320_pe735593_s5.jpg?f=s"
+ },
+ {
+        "name": "Sink",
+        "description": "hgbdkgjld,mzx",
+        "price": "190",
+        "image": "https://www.ikea.com/in/en/images/products/stefan-chair-brown-black__0727320_pe735593_s5.jpg?f=s"
+ },
+ {
+        "name": " Bathtub",
+        "description": "hgbdkgjld,mzx",
+        "price": "200",
+        "image": "https://www.ikea.com/in/en/images/products/stefan-chair-brown-black__0727320_pe735593_s5.jpg?f=s"
+ },
+]}

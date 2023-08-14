@@ -1,0 +1,20 @@
+0- first show login page
+
+1-Table from JSON Data https://stackoverflow.com/questions/19706046/how-to-read-an-external-local-json-file-in-javascript
+
+
+2-Table should be able to search data
+
+3-If data is more than 10, show pagination table
+https://www.w3schools.com/w3css/w3css_pagination.asp
+on click of a page, change json array data indexes. by default 0-9. on click of page 2, 10-19 and so on.
+
+4- Table to sorted
+
+5- open another local page from your table page. on click on row, open new page and show data of the selected row.
+- selected row save index.
+- import json js and above selected js script in the detail html page
+- now in this page, show the data of selected row.
+
+6- show breadcrumbs
+https://www.w3schools.com/howto/howto_css_breadcrumbs.asp

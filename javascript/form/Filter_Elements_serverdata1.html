@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Sample HTML Form</title>
+  <style>
+#container {
+     display: flex;
+    flex-wrap: wrap;
+}
+
+.filterDiv {
+  float: left;
+  background-color: #2196F3;
+  color: #ffffff;
+  width: 200px;
+  text-align: center;
+  margin: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  display: none; /* Hidden by default */
+}
+
+
+
+/* Style the buttons */
+.btn {
+  border: none;
+  outline: none;
+  padding: 12px 16px;
+  background-color: #f1f1f1;
+  cursor: pointer;
+}
+
+/* Add a light grey background on mouse-over */
+.btn:hover {
+  background-color: #ddd;
+}
+
+/* Add a dark background to the active button */
+.btn.active {
+  background-color: #666;
+  color: white;
+}
+
+
+</style>
+</head>
+<body>
+  <h2>Filter Div Eliment</h2>
+
+<!-- Control buttons -->
+<div id="myBtnContainer">
+  <button class="btn active" onclick="filterSelection('all')"> Show all</button>
+</div>
+
+<!-- The filterable elements. Note that some have multiple class names (this can be used if they belong to multiple categories) -->
+<div id="container">
+
+</div>
+
+<script src="api/Filter_Elements_data.json">
+  </script>
+
+<script type="text/javascript">
+
+
+const getdata = server_data;
+console.log(server_data);
+
+const Container = document.getElementById('container');
+
+
+render_data_list(getdata["data"]);
+
+
+
+function render_data_list(data){
+    let filterElementsList = data;
+    for (let r = 0; r < filterElementsList.length; r++) {
+            let Elements_info = filterElementsList[r];
+            let size = getdata["data"][r]["detail"]["size"];
+            size = size  == null ? "Not Available" : size; // ternary operator
+            let cellHtmlContent = `
+              <div class="filterDiv" id="test">
+               <h3 >${getdata["data"][r]["detail"]["name"]}</h3>
+               <p>Id: ${getdata["data"][r]["detail"]["id"]}</p>
+                <p class="category">Category: ${getdata["data"][r]["category"]}</p>
+                <p>Price: $ ${getdata["data"][r]["detail"]["price"]}</p>
+                <p>Size: ${size} </p>
+                </div>
+            `;
+            container.innerHTML += cellHtmlContent
+    }
+}
+
+
+
+filterSelection("all")
+
+
+function filterSelection(category) {
+ const elements = document.getElementsByClassName('filterDiv');
+
+// Show all elements if the category is 'all'
+  if (category === 'all') {
+    for (let i = 0; i < elements.length; i++) {
+      elements[i].style.display = "block";
+
+      // // Reset the CSS property for category text
+      // elements[i].getElementsByClassName('category')[0].style.color = "red";
+    }
+  } else {
+    // Iterate over each element and check its category
+    for (let i = 0; i < elements.length; i++) {
+      const currentCategory = getdata["data"][i]["category"];
+
+      if (currentCategory === category) {
+        elements[i].style.display = "block";
+        // console.log(elements[i].childNodes);
+
+        // Change the CSS property for category text to red
+        elements[i].childNodes[5].style.color = "red";
+      } else {
+        elements[i].style.display = "none";
+        // console.log(elements[i].childNodes);
+
+        // Reset the CSS property for category text
+      elements[i].childNodes[5].style.color = " ";
+      }
+    }
+  }
+}
+
+    let btnContainer = document.getElementById('myBtnContainer');
+    
+    let categories = getCategories();
+    function getCategories() {
+      let categories = new Set();
+      for (let i = 0; i < getdata["data"].length; i++) {
+        categories.add(getdata["data"][i]["category"]);
+      }
+      return Array.from(categories);
+    }
+
+for (let i = 0; i < categories.length; i++) {
+      let button = document.createElement('button');
+      button.className = 'btn';
+      button.innerHTML = categories[i];
+      button.addEventListener('click', function () {
+        let current = document.getElementsByClassName('active');
+        current[0].className = current[0].className.replace(' active', '');
+        this.className += ' active';
+        filterSelection(categories[i]);
+      });
+
+      btnContainer.appendChild(button);
+    }
+
+
+
+</script>
+</body>
+</html>

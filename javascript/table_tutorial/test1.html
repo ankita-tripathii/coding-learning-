@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h2>JavaScript Map Objects</h2>
+<p>Using Map.set():</p>
+
+<p class="demo1"></p>
+<h1 class="demo1"></h1>
+<h2 class="demo1"></h2>
+<h3 class="demo1"></h3>
+
+<script>
+// Create a Map
+const fruits = new Map();
+
+// Set Map Values
+fruits.set("apples", 500);
+fruits.set("bananas", 300);
+fruits.set("oranges", 200);
+
+const contentHtmlItems = document.getElementsByClassName("demo1");
+console.log(contentHtmlItems);
+
+//contentHtmlItems[0].innerHTML = fruits.get("apples");
+//contentHtmlItems[1].innerHTML = fruits.get("bananas");
+
+for (index in contentHtmlItems) {
+  // code block to be executed
+  contentHtmlItems[index].innerHTML = fruits.get("apples");
+}
+
+</script>
+
+</body>
+</html>
+

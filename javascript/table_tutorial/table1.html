@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Tabular Data</title>
+  <style>
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    th, td {
+      border: 1px solid black;
+      padding: 8px;
+      text-align: left;
+    }
+  </style>
+</head>
+<body>
+  <table id="data-table" class="table-data">
+    <tr>
+      <th>Column 1</th>
+      <th>Column 2</th>
+      <th>Column 3</th>
+    </tr>
+
+    <tr>
+      <td>dUMMY</td>
+      <td>DUMMY3</td>
+      <td>AKSJDASKJD</td>
+    </tr>
+
+  
+  </table>
+
+</br>
+
+    <table class="table-data">
+    <tr>
+      <th>Column 1</th>
+      <th>Column 2</th>
+      <th>Column 3</th>
+      <th>Column 4</th>
+    </tr>
+  
+  </table>
+
+  <script>
+    const syncWait = ms => {
+    const end = Date.now() + ms
+    while (Date.now() < end) continue
+    }
+
+    const table = document.getElementById("data-table");
+    const table1 = document.getElementsByClassName("table-data");
+    
+    console.log(table);
+    console.log(table1[1]);
+
+    const server_data = {
+        key1: "value1",
+        key2: "value2",
+        key3: "value3",
+        key4: "value4",
+        key5: "value5",
+        key6: "value6",
+        key7: "value7",
+        key8: "value8",
+        key9: "value9",
+        key10: "value10",
+        key11: "value11",
+        key12: "value12",
+        key13: "value13",
+        key14: "value14",
+        key15: "value15",
+        key16: "value16",
+        key17: "value17",
+        key18: "value18",
+        key19: "value19",
+        key20: "value20",
+        key21: "value21"
+    };
+
+    for (var i = 0; i < 7; i++) {
+      let row1 = i;
+
+     // syncWait(5000); //ms
+
+      let indexKey1 = "key"+(i*3+1);
+      let indexKey2 = "key"+(i*3+2);
+      let indexKey3 = "key"+(i*3+3);
+
+      console.log(indexKey1);
+      console.log(server_data[indexKey1]);
+
+      let cell1 = server_data[indexKey1];
+      let cell2 = server_data[indexKey2];
+      let cell3 = server_data[indexKey3];
+
+      var ms = 1000; //1 second
+      //https://stackoverflow.com/questions/32294635/is-it-possible-to-animate-a-change-to-innerhtml-using-css-only
+      
+
+      // Async method of execution of a function
+      setTimeout(function(){
+        // some code
+      table.innerHTML += `
+        <tr>
+        <td>Row ${row1}, Cell ${cell1}</td>
+        <td>Row ${row1}, Cell ${cell2}</td>
+        <td>Row ${row1}, Cell ${cell3}</td>
+        </tr>
+        `;
+      }, 1000);
+
+      
+    }
+
+    
+  </script>
+</body>
+</html>

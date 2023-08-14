@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Sample HTML Form</title>
+  <style>
+    #container {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .filterDiv {
+      float: left;
+      background-color: #2196F3;
+      color: #ffffff;
+      width: 200px;
+      text-align: center;
+      margin: 10px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      display: none; /* Hidden by default */
+    }
+
+    /* Style the buttons */
+    .btn {
+      border: none;
+      outline: none;
+      padding: 12px 16px;
+      background-color: #f1f1f1;
+      cursor: pointer;
+    }
+
+    /* Add a light grey background on mouse-over */
+    .btn:hover {
+      background-color: #ddd;
+    }
+
+    /* Add a dark background to the active button */
+    .btn.active {
+      background-color: #666;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <h2>Filter Div Element</h2>
+
+  <!-- Control buttons -->
+  <div id="myBtnContainer">
+    <!-- Buttons will be dynamically created here -->
+  </div>
+
+  <!-- The filterable elements. Note that some have multiple class names (this can be used if they belong to multiple categories) -->
+  <div id="container"></div>
+
+  <script src="api/Filter_Elements_data.json"></script>
+
+  <script type="text/javascript">
+    const getdata = server_data;
+    console.log(server_data);
+
+    const Container = document.getElementById('container');
+
+    render_data_list(getdata["data"]);
+    createButtons();
+
+    function render_data_list(data) {
+      let filterElementsList = data;
+      for (let r = 0; r < filterElementsList.length; r++) {
+        let Elements_info = filterElementsList[r];
+        let cellHtmlContent = `
+          <div class="filterDiv">
+            <h3>${getdata["data"][r]["detail"]["name"]}</h3>
+            <p>Id: ${getdata["data"][r]["detail"]["id"]}</p>
+            <p class="category">Category: ${getdata["data"][r]["category"]}</p>
+            <p>Price: $${getdata["data"][r]["detail"]["price"]}</p>
+          </div>
+        `;
+        container.innerHTML += cellHtmlContent;
+      }
+    }
+
+    function createButtons() {
+      let btnContainer = document.getElementById("myBtnContainer");
+      let categories = getCategories();
+
+      // Create a button for each category
+      categories.forEach(category => {
+        let button = document.createElement("button");
+        button.classList.add("btn");
+        button.textContent = category;
+        button.addEventListener("click", function () {
+          filterSelection(category);
+        });
+        btnContainer.appendChild(button);
+      });
+    }
+
+    function getCategories() {
+      let categories = new Set();
+      for (let i = 0; i < getdata["data"].length; i++) {
+        categories.add(getdata["data"][i]["category"]);
+      }
+      return Array.from(categories);
+    }
+
+
+    function filterSelection(category) {
+      const elements = document.getElementsByClassName('filterDiv');
+
+      // Show all elements if the category is 'all'
+      if (category === 'all') {
+        for (let i = 0; i < elements.length; i++) {
+          elements[i].style.display = "block";
+        }
+      } else {
+        // Iterate over each element and check its category
+        for (let i = 0; i < elements.length; i++) {
+          const currentCategory = getdata["data"][i]["category"];
+
+          if (currentCategory === category) {
+            elements[i].style.display = "block";
+            //elements[i] for selected category, also change font color to Red for Category text
+          } else {
+            elements[i].style.display = "none";
+          }
+        }
+      }
+    }
+
+    // Add active class to the current control button (highlight it)
+    let btns = document.getElementById("myBtnContainer").getElementsByClassName("btn");
+    btns[0].classList.add("active");
+    for (let i = 0; i < btns.length; i++) {
+      btns[i].addEventListener("click", function () {
+        let current = document.getElementsByClassName("active");
+        current[0].className = current[0].className.replace(" active", "");
+        this.className += " active";
+      });
+    }
+  </script>
+</body>
+</html>

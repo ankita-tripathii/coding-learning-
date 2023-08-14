@@ -1,0 +1,367 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <title>API Product Detail Page</title>
+    <style type="text/css">
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+
+#searchInput {
+  background-image: url('images/searchicon.png'); /* Add a search icon to input */
+  background-position: 10px 7px; /* Position the search icon */
+  background-repeat: no-repeat; /* Do not repeat the icon image */
+  width: 100%; /* Full-width */
+  font-size: 16px; /* Increase font-size */
+  padding: 12px 20px 12px 40px; /* Add some padding */
+  border: 1px solid #ddd; /* Add a grey border */
+  margin-bottom: 12px; /* Add some space below the input */
+  }
+
+    html{
+      font-size: 60%;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body{
+      font-size: 1.6rem;
+    }
+
+    </style>
+  </head>
+  <body>
+
+    <div class="container gap-2 d-grid">
+    <div class="container">
+      <div class="row">
+        <nav class="navbar bg-body-tertiary navbar-expand-lg bg-dark border-bottom border-bottom-dark" data-bs-theme="dark">
+
+        <div class="col-lg-4 col-4">
+        </div>
+
+        <div class="col-lg-4 col-4">
+        </div>
+
+        <div class="col-lg-4 col-4">
+          
+                <a class="nav-link d-inline-block"  href="product_list.html"><span style="color:white;">Product List</span></a>
+                     
+                <a class="nav-link d-inline-block" href="manage_product.html"><span style="color:white;">Manage Products</span></a>              
+          </div>
+       </nav>
+      </div>
+    </div>
+
+    <div>
+      <div class="text-center">
+        <h2 class="fs-1 fw-bold">Product List</h2>
+      </div>
+      <div>
+      <input type="text" id="searchInput" onkeyup="search_product_name()" placeholder="Search product title...">
+      </div>
+      <div>
+        <table class="table-hover table table-bordered" id="table_cell">
+          <thead class="table-dark text-center sticky-top">
+            <tr>
+              <th scope="col">Id</th>
+              <th  scope="col">Title</th>
+              <th  scope="col">Category</th>
+              <th  scope="col">Price</th>
+              <th  scope="col">Image</th>
+              <th  scope="col">Manage Products</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr >
+
+            </tr>
+          </tbody>
+        </table>
+
+      </div>
+    </div>
+
+    <!-- Modal -->
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="row">
+          <div class=" modal-content">
+            <div class=" modal-header">
+              <h2 class="fs-1 fw-bold">View Product</h2>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+             <div class="row "> 
+              <div class="col-lg-3 col-12"> 
+                <div style="height:80%; width:100%">
+                  <img id="modal-image"class="rounded float-lg-start" src="" style="height:100%; width:100%"  alt="...">
+                </div>
+              </div>
+              <div class="col-lg-7 col-12 ">
+                <div class="row">
+                  <div  class="col-lg-12 col-12 font-weight-bold" style="text-align:left;"><h3 id="modal-title"></h3></div>
+                </div>
+
+                <div class="row ">
+                  <div class="col-lg-7 col-7" style="text-align:left;"><span class="fw-bold align-middle">Product Rating: <span id="modal-rating"class="small-ratings">
+                  </span></span>             
+                </div>
+                <div class="col-lg-5 col-5" style="text-align:left;"><span  class="fw-bold align-middle">Price:</span><span> </span><span  id="modal-price" class="align-middle"></span></div>
+              </div>
+
+              <div class="row">
+                <div id="modal-description"class="col-lg-12 col-12" style="text-align:left;">
+                </div>
+              </div><br>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>      
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h2 class="modal-title fs-1 fw-bold" id="exampleModalLabel">Update Product</h2>
+          </div>
+          <div class="modal-body">
+            <form>
+                <div class="row">
+                  <label for="input" class="col-sm-2 col-form-label">Title:</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" id="inputTitle">
+                  </div>
+                </div>
+                <div class="row">
+                  <label for="input" class="col-sm-2 col-form-label">Category:</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" id="inputCategory">
+                  </div>
+                </div>
+                <div class="row">
+                  <label for="input" class="col-sm-2 col-form-label">Price:</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" id="inputPrice">
+                  </div>
+                </div>
+                 <div class="row">
+                  <label for="input" class="col-sm-2 col-form-label">Image:</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" id="inputImage">
+                  </div>
+                </div>
+              </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+            <button type="button" class="btn btn-primary" data-bs-dismiss="modal" id="saveChangesBtn" onclick="saveChange()">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    // create variable 
+    let productElement;
+   table_detail();
+
+   function table_detail(json) {
+    fetch('https://fakestoreapi.com/products')
+    .then(res=>res.json())
+    .then(json=> {
+      productElement = json;
+      const table = document.getElementById('table_cell');
+      for (let i = 0; i < productElement.length; i++){
+        let product_info = productElement[i]; // assign to outer variable
+        let tablecellHtmlcontent = `
+        <tr>
+        <td class="table_product_id"><h5>${productElement[i]["id"]}</h5></td>       
+        <td class="table_product_title"><h5>${productElement[i]["title"]}</h5></td>
+        <td class="table_product_category"><h5>${productElement[i]["category"]}</h5></td>
+        <td class="table_product_price"><h5>$${productElement[i]["price"]}</h5></td>
+        <td class="table_product_image"><img src=${productElement[i]["image"]} width="50" height="50"></td>
+        <td ><button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal1" onclick="EditButtonClick(${productElement[i]['id']})">Edit</button>
+        <button type="button" class="btn btn-info view_modal" data-bs-toggle="modal" data-bs-target="#exampleModal" id="view-products" data-product-id="${productElement[i]["id"]}">View</button>
+        </td>
+        </tr>
+        `;
+
+        table_cell.innerHTML += tablecellHtmlcontent
+      } // for loop ends here  
+
+      const view_buttons = document.getElementsByClassName('view_modal');
+      for (let i = 0; i < view_buttons.length; i++) {
+      view_buttons[i].addEventListener('click', showModal);
+      }
+
+   });
+  } // function table_detail ends here 
+
+
+      
+
+// document.addEventListener('click', showModal) 
+
+   function showModal(event) {
+
+  // //Check if the clicked element is the "View" button
+  // if (event.target.id === 'view-products') {
+
+     // Get the product ID from the data-product-id attribute
+    const productId = event.target.dataset.productId;
+    const modalImage = document.getElementById('modal-image');
+    // modalImage.src = "images/placeholder.png"; // placeholder image url
+
+    // no need to call product detail API, but get index from click and read from array
+
+    
+        const product = productElement.find(product => product.id ==productId);
+
+
+        if (product){
+       
+        modalImage.src = product["image"];
+
+        const modalTitle = document.getElementById('modal-title');
+         modalTitle.textContent = product["title"];
+
+        const modalRating = document.getElementById('modal-rating');
+        modalRating.textContent = product["rating"]["rate"];
+
+        const modalPrice = document.getElementById('modal-price');
+        modalPrice.textContent = product["price"];
+
+        const modalDescription = document.getElementById('modal-description');
+        modalDescription.textContent = product["description"];
+      }
+      
+  }
+
+
+
+function EditButtonClick(productId) {
+  fetch(`https://fakestoreapi.com/products/${productId}`)
+    .then((res) => res.json())
+    .then((json) => {
+      
+      const modalTitleInput = document.getElementById('inputTitle');
+  const modalCategoryInput = document.getElementById('inputCategory');
+  const modalPriceInput = document.getElementById('inputPrice');
+  const modalImageInput = document.getElementById('inputImage');
+
+  modalTitleInput.value = json.title;
+  modalCategoryInput.value = json.category;
+  modalPriceInput.value = json.price;
+  modalImageInput.value=json.image;
+
+
+const saveChangesBtn = document.getElementById('saveChangesBtn');
+      saveChangesBtn.onclick = () => {
+        // function saveChange(){
+        // Get the updated values from the input fields
+        const updatedTitle = modalTitleInput.value;
+        const updatedCategory = modalCategoryInput.value;
+        const updatedPrice = modalPriceInput.value;
+        const updatedImage = modalImageInput.value;
+     
+       // // Create an object with the updated data
+       //  const updatedProductData = {
+       //    title: updatedTitle,
+       //    price: Number(updatedPrice),
+       //    image: updatedImage,
+       //    category: updatedCategory,
+       //  };
+  
+// Send a PUT request to update the product using the provided API
+        fetch(`https://fakestoreapi.com/products/${productId}`, {
+          method: "PUT",
+          body: JSON.stringify({
+
+            title: updatedTitle,
+            category: updatedCategory,
+            price: Number(updatedPrice),
+            image: updatedImage,
+          
+
+        }),
+        })
+          .then((res) => res.json())
+          .then((json) => {
+            // The API will return the updated product data
+            // You can choose to update the product in the table with the new data
+            // or take any other actions based on the response from the server.
+            console.log(json);
+            alert("Product data updated successfully!");
+            window.location.reload();
+            // Since this is a fake API, it won't actually update the product,
+            // so we will only log the updated data.
+          })
+      .catch(error => {
+      console.error("Error updating the product:", error);
+   })
+
+
+   };
+})
+} 
+
+
+  
+
+   
+
+     
+      
+  
+
+   
+  
+  // search prodect name-------------------------------------------------------
+
+    
+  function search_product_name() {
+  // Declare variables
+  let input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("searchInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("table_cell");
+  tr = table.getElementsByTagName("tr");
+
+  // Loop through all table rows, and hide those who don't match the search query
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[1];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
+}
+</script>
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+    
+  </body>
+</html>

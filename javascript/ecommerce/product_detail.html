@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <title >Product Detail</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <link rel="stylesheet" href="css/product_detail.css">
+</head>
+<body>
+
+    
+ 
+<!-- <i class="fa-sharp fa-light fa-house"></i>  -->
+
+  <script src="api/data.json">
+  </script>
+
+<!--   <script src="api/globalConstant.js">
+  </script> -->
+
+  <script src="js/product_detail.js">
+</script>
+
+<h2 style="text-align:center">Product Detail</h2>
+
+ <div id=container class="col-12">
+   <div id="imagecontainer" class="col-4">
+    <img src="images/round_table.jpg" >
+   </div>
+
+
+
+<div id="textcontainer"class="col-8">
+  <h1 style="text-align:left;">Table </h1>
+  <div class="">
+    <span class="fa fa-star checked"></span>
+    <span class="fa fa-star checked"></span>
+    <span class="fa fa-star checked"></span>
+    <span class="fa fa-star"></span>
+    <span class="fa fa-star"></span>
+  </div>
+
+  <div>
+    <p style="text-align: left;"class="price"> <span style="color:red;">-49% </span> <span style="font-size:20px;">&#8377;10</span> </p>
+    <p style="color:#C0C0C0">M.R.P.<del>&#8377;150</del></p>
+  </div>
+
+    <div >
+      <p id="desc">When choosing a solid-wood dining table there’re many different things to consider, from what type of wood to choose, to the finish you should apply. This will completely<span id="dots">...</span><span id="more"> depend on the look you’re trying to achieve in your space, but with so many options out there it can be hard to know where to start. We’ve pulled together everything you should know before buying a wooden dining table to give you a helping hand.</span><button onclick="ReadmoreFunction()" id="moreBtn">Read more</button></p>
+      
+    </div>
+    <div class ="buttoncontainer">
+    <p><button id="cartbutton">Add to Cart</button></p>
+   </div>
+  </div>
+</div>
+ 
+</body>
+</html>

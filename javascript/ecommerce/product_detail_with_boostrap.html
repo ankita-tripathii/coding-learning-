@@ -1,0 +1,888 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+
+
+  <!-- Add icon library -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <style>
+
+/*.container > .row {
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+.container > .row > .col-lg-3 {
+  display: inline-block;
+  float: none;
+}*/
+
+@media (min-width: 992px) {
+  .container-scroll {
+    overflow-x: auto;
+  }
+  .container-scroll > .row {
+    width: 100%; /* = 100% * 8/3 */
+    flex-wrap: nowrap;
+  }
+}
+
+@media (max-width: 992px) {
+  .container-scroll {
+    overflow-x: auto;
+  }
+  .container-scroll > .row {
+    width: 50%; /* = 100% * 8/3 */
+    flex-wrap: nowrap;
+  }
+}
+
+@media (max-width: 576px) {
+  .container-scroll {
+    overflow-x: auto;
+  }
+  .container-scroll > .row {
+    width: 50%; /* = 100% * 8/3 */
+    flex-wrap: nowrap;
+  }
+}
+
+
+#more {display: none;}
+
+.rating > input{ display:none;}
+
+.rating > label {
+  position: relative;
+  width: 1em;
+  font-size: 2vw;
+  color: #FFD600;
+  cursor: pointer;
+}
+.rating > label::before{ 
+  content: "\2605";
+  position: absolute;
+  opacity: 0;
+}
+.rating > label:hover:before,
+.rating > label:hover ~ label:before {
+  opacity: 1 !important;
+}
+
+.rating > input:checked ~ label:before{
+  opacity:1;
+}
+
+.rating:hover > input:checked ~ label:before{ opacity: 0.4; }
+
+
+.rating-color {
+  color:#fbc634;
+}
+
+
+
+</style>
+
+<title>Product Detail Page With Boostrap</title>
+</head>
+
+<body>
+
+
+
+  <div class="container">
+    <div class="row sticky-top">
+      <nav class="navbar bg-body-tertiary navbar-expand-lg bg-dark border-bottom border-bottom-dark" data-bs-theme="dark">
+        <div class="col-lg-4 col-4 ">
+          <div class="col-lg-8 col-8 container-fluid"><a class="navbar-brand" href="#">
+            <img src="images/logo.png" alt="Logo" width="30" height="24" class="d-inline-block text-start"><span>   </span><span style="color:white;"class="align-middle">Buyonline</span></a>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-4">
+        </div>
+
+        <div class="col-lg-4 col-4"id="navbarNav row">
+          <div class="row navbar-nav">
+            <div class="col-lg-2 col-2 " >
+              <li class="nav-item">
+                <a class="nav-link"  href="#"><span style="color:white;">Home</span></a>
+              </li>
+            </div>
+            <div class="col-lg-3 col-3">
+              <li class="nav-item">
+                <a class="nav-link" href="#"><span style="color:white;">Products</span></a>
+              </li>
+            </div>
+          </div>
+          
+        </div>
+      </nav>
+    </div>
+  </div><br>
+
+
+
+
+  <div class="container ">
+
+   <div class="row">
+    <div class="col-lg-5 col-12 carousel slide" id="carouselExample">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="images/round_table.jpg" class="rounded float-lg-start mh-100 w-100 " data-bs-toggle="modal" data-bs-target="#staticBackdrop"  alt="...">
+        </div>
+        <div class="carousel-item active">
+          <img src="images/round_table.jpg" class="rounded float-lg-start mh-100 w-100 " data-bs-toggle="modal" data-bs-target="#staticBackdrop"  alt="...">
+        </div>
+        <div class="carousel-item active">
+          <img src="images/round_table.jpg" class="rounded float-lg-start mh-100 w-100 " data-bs-toggle="modal" data-bs-target="#staticBackdrop"  alt="...">
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body"><img src="images/round_table.jpg" style="height:100%; width:100%;">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-7 col-12">
+      <div class="row">
+        <div class="col-lg-12 col-12 font-weight-bold" style="text-align:left;"><h3>Table</h3></div>
+      </div>
+
+      <div class="row ">
+        <div class="col-lg-7 col-7" style="text-align:left;"><span class="fw-bold align-middle">Product Rating:<span class="rating align-middle">
+         <input type="radio" name="rating" value="5" id="5"><label for="5">☆</label>
+         <input type="radio" name="rating" value="4" id="4"><label for="4">☆</label>
+         <input type="radio" name="rating" value="3" id="3"><label for="3">☆</label>
+         <input type="radio" name="rating" value="2" id="2"><label for="2">☆</label>
+         <input type="radio" name="rating" value="1" id="1"><label for="1">☆</label>
+       </span></span>             
+     </div>
+     <div class="col-lg-5 col-5" style="text-align:left;"><span class="fw-bold align-middle">Price:</span><span> </span><span class="align-middle">&#8377;999</span></div>
+   </div>
+
+   <div class="row">
+    <div class="col-lg-12 col-12" style="text-align:left;">
+      <p id="desc">When choosing a solid-wood dining table there’re many different things to consider, from what type of wood to choose, to the finish you should apply. This will completely<span id="dots">...</span><span id="more"> depend on the look you’re trying to achieve in your space, but with so many options out there it can be hard to know where to start. We’ve pulled together everything you should know before buying a wooden dining table to give you a helping hand.</span><span class="fw-medium fs-6 text-primary "type="button" onclick="ReadmoreFunction()" id="moreBtn">Read more</span></p>
+    </div>
+  </div><br>
+  <div class="row">
+    <div class="col-lg-3 col-5" style="text-align:left;"><button type="button" class="btn btn-dark">Add To Cart</button></div>
+    <div class="col-lg-3 col-5" style="text-align:left;"><button type="button" class="btn btn-outline-secondary"><i class="fa fa-solid fa-heart" style="color: #fa0000;"></i>Favourite</button></div>
+  </div>
+</div>
+</div>
+
+</div><br>
+
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-12" style="text-align:left;"><h3 class="fs-3 text-start">Similar Products</h3></div>
+  </div>
+</div><br>
+
+
+<div class="container container-scroll" >
+
+  <div class="row" >
+
+    <div class="col-lg-3" >
+      <div class="row"> 
+        <img src="images/square_table.jpg" class="card-img-top image-card-thumbnail" data-bs-toggle="modal" data-bs-target="#staticBackdrop1" data-id="0" alt="..."style="height: 10rem;">
+      </div>
+      <div class="row"> 
+        <div class="card-body text-center">
+          <h5 class="card-title">Square Table</h5>
+          <p class="fs-6">ROOTWOOD Sheesham Wood Writing Study & Computer Table...</p>
+          <div>
+            <span class="fw-bold fs-6 opacity-50">M.R.P:</span><span> </span><span class="text-decoration-line-through opacity-50">&#8377;1999</span>
+          </div>
+          <div>
+            <span class="fw-bold fs-6">Price:</span><span> </span><span>&#8377;999</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="staticBackdrop1" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="row modal-content">
+          <div class=" row modal-header">
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class=" row modal-body">
+
+            <div class="col-lg-5"><img id="xyz1" src="images/square_table.jpg" style="height:80%; width:100%;">
+            </div>
+
+            <div class="col-lg-7 col-12">
+              <div class="row">
+                <div class="col-lg-12 col-12 font-weight-bold" style="text-align:left;"><h3>Square Table</h3></div>
+              </div>
+
+              <div class="row ">
+                <div class="col-lg-7 col-7" style="text-align:left;"><span class="fw-bold align-middle">Product Rating:<span class="small-ratings align-middle">
+                  <i class="fa fa-star rating-color"></i>
+                  <i class="fa fa-star rating-color"></i>
+                  <i class="fa fa-star rating-color"></i>
+                  <i class="fa fa-star rating-color"></i>
+                  <i class="fa fa-star"></i>
+                </span></span>             
+              </div>
+              <div class="col-lg-5 col-5" style="text-align:left;"><span class="fw-bold align-middle">Price:</span><span> </span><span class="align-middle">&#8377;999</span></div>
+            </div>
+
+            <div class="row">
+              <div class="col-lg-12 col-12" style="text-align:left;">
+                <p id="desc">When choosing a solid-wood dining table there’re many different things to consider, from what type of wood to choose, to the finish you should apply. This will completely<span id="dots">...</span><span id="more"> depend on the look you’re trying to achieve in your space, but with so many options out there it can be hard to know where to start. We’ve pulled together everything you should know before buying a wooden dining table to give you a helping hand.</span><span class="fw-medium fs-6 text-primary "type="button" onclick="ReadmoreFunction()" id="moreBtn">Read more</span></p>
+              </div>
+            </div><br>
+            <div class="row">
+              <div class="col-lg-5 col-5" style="text-align:left;"><button type="button" class="btn btn-dark">Add To Cart</button></div>
+              <div class="col-lg-5 col-5" style="text-align:left;"><button type="button" class="btn btn-outline-secondary"><i class="fa fa-solid fa-heart" style="color: #fa0000;"></i>Favourite</button></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-lg-3" >
+    <div class="row">
+      <img src="images/square3_table.jpg" class="card-img-top image-card-thumbnail" data-bs-toggle="modal" data-bs-target="#staticBackdrop2" alt="..."style="height: 10rem;">
+    </div>
+    <div class="row">
+      <div class="card-body text-center">
+        <h5 class="card-title">3-Square Table</h5>
+        <p class="fs-6">Wooden World Beautiful Wooden Coffee Table, Side Table/End... </p>
+        <div>
+          <span class="fw-bold fs-6 opacity-50">M.R.P:</span><span> </span><span class="text-decoration-line-through opacity-50">&#8377;1999</span>
+        </div>
+        <div>
+          <span class="fw-bold fs-6">Price:</span><span> </span><span>&#8377;999</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="staticBackdrop2" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="row modal-content">
+        <div class=" row modal-header">
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class=" row modal-body">
+
+          <div class="col-lg-5"><img id="xyz" src="images/square3_table.jpg" style="height:100%; width:100%;">
+          </div>
+
+          <div class="col-lg-7 col-12">
+            <div class="row">
+              <div class="col-lg-12 col-12 font-weight-bold" style="text-align:left;"><h3>3-Square Table</h3></div>
+            </div>
+
+            <div class="row ">
+              <div class="col-lg-7 col-7" style="text-align:left;"><span class="fw-bold align-middle">Product Rating:<span class="small-ratings align-middle">
+                <i class="fa fa-star rating-color"></i>
+                <i class="fa fa-star rating-color"></i>
+                <i class="fa fa-star rating-color"></i>
+                <i class="fa fa-star rating-color"></i>
+                <i class="fa fa-star"></i>
+              </span></span>             
+            </div>
+            <div class="col-lg-5 col-5" style="text-align:left;"><span class="fw-bold align-middle">Price:</span><span> </span><span class="align-middle">&#8377;999</span></div>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-12 col-12" style="text-align:left;">
+              <p id="desc">When choosing a solid-wood dining table there’re many different things to consider, from what type of wood to choose, to the finish you should apply. This will completely<span id="dots">...</span><span id="more"> depend on the look you’re trying to achieve in your space, but with so many options out there it can be hard to know where to start. We’ve pulled together everything you should know before buying a wooden dining table to give you a helping hand.</span><span class="fw-medium fs-6 text-primary "type="button" onclick="ReadmoreFunction()" id="moreBtn">Read more</span></p>
+            </div>
+          </div><br>
+          <div class="row">
+            <div class="col-lg-5 col-5" style="text-align:left;"><button type="button" class="btn btn-dark">Add To Cart</button></div>
+            <div class="col-lg-5 col-5" style="text-align:left;"><button type="button" class="btn btn-outline-secondary"><i class="fa fa-solid fa-heart" style="color: #fa0000;"></i>Favourite</button></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="col-lg-3" >
+  <div class="row">
+    <img src="images/circle_table.jpg" class="card-img-top image-card-thumbnail" data-bs-toggle="modal" data-bs-target="#staticBackdrop3" alt="..."style="height: 10rem;">
+  </div>
+  <div class="row">
+    <div class="card-body text-center">
+      <h5 class="card-title">Circle Table</h5>
+      <p class="fs-6">Star Fab’s Matt Finish Laminated Plywood Coffee Table/Side...</p>
+      <div>
+        <span class="fw-bold fs-6 opacity-50">M.R.P:</span><span> </span><span class="text-decoration-line-through opacity-50">&#8377;1999</span>
+      </div>
+      <div>
+        <span class="fw-bold fs-6">Price:</span><span> </span><span>&#8377;999</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop3" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="row modal-content">
+      <div class=" row modal-header">
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class=" row modal-body">
+
+        <div class="col-lg-5"><img src="images/circle_table.jpg" style="height:100%; width:100%;">
+        </div>
+
+        <div class="col-lg-7 col-12">
+          <div class="row">
+            <div class="col-lg-12 col-12 font-weight-bold" style="text-align:left;"><h3>Circle Table</h3></div>
+          </div>
+
+          <div class="row ">
+            <div class="col-lg-7 col-7" style="text-align:left;"><span class="fw-bold align-middle">Product Rating:<span class="small-ratings align-middle">
+              <i class="fa fa-star rating-color"></i>
+              <i class="fa fa-star rating-color"></i>
+              <i class="fa fa-star rating-color"></i>
+              <i class="fa fa-star rating-color"></i>
+              <i class="fa fa-star"></i>
+            </span></span>             
+          </div>
+          <div class="col-lg-5 col-5" style="text-align:left;"><span class="fw-bold align-middle">Price:</span><span> </span><span class="align-middle">&#8377;999</span></div>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-12 col-12" style="text-align:left;">
+            <p id="desc">When choosing a solid-wood dining table there’re many different things to consider, from what type of wood to choose, to the finish you should apply. This will completely<span id="dots">...</span><span id="more"> depend on the look you’re trying to achieve in your space, but with so many options out there it can be hard to know where to start. We’ve pulled together everything you should know before buying a wooden dining table to give you a helping hand.</span><span class="fw-medium fs-6 text-primary "type="button" onclick="ReadmoreFunction()" id="moreBtn">Read more</span></p>
+          </div>
+        </div><br>
+        <div class="row">
+          <div class="col-lg-5 col-5" style="text-align:left;"><button type="button" class="btn btn-dark">Add To Cart</button></div>
+          <div class="col-lg-5 col-5" style="text-align:left;"><button type="button" class="btn btn-outline-secondary"><i class="fa fa-solid fa-heart" style="color: #fa0000;"></i>Favourite</button></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<div class="col-lg-3" >
+  <div class="row">
+    <img src="images/round_table.jpg" class="card-img-top image-card-thumbnail" data-bs-toggle="modal" data-bs-target="#staticBackdrop4" alt="..."style="height: 10rem;">
+  </div>
+  <div class="row">
+    <div class="card-body text-center">
+      <h5 class="card-title">Round Table</h5>
+      <p class="fs-6">UHUD CRAFTS Beautiful Antique Wooden Fold-able Side Table/End...</p>
+      <div>
+        <span class="fw-bold fs-6 opacity-50">M.R.P:</span><span> </span><span class="text-decoration-line-through opacity-50">&#8377;1999</span>
+      </div>
+      <div>
+        <span class="fw-bold fs-6">Price:</span><span> </span><span>&#8377;999</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop4" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="row modal-content">
+      <div class=" row modal-header">
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class=" row modal-body">
+
+        <div class="col-lg-5"><img src="images/round_table.jpg" style="height:100%; width:100%;">
+        </div>
+
+        <div class="col-lg-7 col-12">
+          <div class="row">
+            <div class="col-lg-12 col-12 font-weight-bold" style="text-align:left;"><h3>Round Table</h3></div>
+          </div>
+
+          <div class="row ">
+            <div class="col-lg-7 col-7" style="text-align:left;"><span class="fw-bold align-middle">Product Rating:<span class="small-ratings align-middle">
+              <i class="fa fa-star rating-color"></i>
+              <i class="fa fa-star rating-color"></i>
+              <i class="fa fa-star rating-color"></i>
+              <i class="fa fa-star rating-color"></i>
+              <i class="fa fa-star"></i>
+            </span></span>             
+          </div>
+          <div class="col-lg-5 col-5" style="text-align:left;"><span class="fw-bold align-middle">Price:</span><span> </span><span class="align-middle">&#8377;999</span></div>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-12 col-12" style="text-align:left;">
+            <p id="desc">When choosing a solid-wood dining table there’re many different things to consider, from what type of wood to choose, to the finish you should apply. This will completely<span id="dots">...</span><span id="more"> depend on the look you’re trying to achieve in your space, but with so many options out there it can be hard to know where to start. We’ve pulled together everything you should know before buying a wooden dining table to give you a helping hand.</span><span class="fw-medium fs-6 text-primary "type="button" onclick="ReadmoreFunction()" id="moreBtn">Read more</span></p>
+          </div>
+        </div><br>
+        <div class="row">
+          <div class="col-lg-5 col-5" style="text-align:left;"><button type="button" class="btn btn-dark">Add To Cart</button></div>
+          <div class="col-lg-5 col-5" style="text-align:left;"><button type="button" class="btn btn-outline-secondary"><i class="fa fa-solid fa-heart" style="color: #fa0000;"></i>Favourite</button></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<div class="col-lg-3" >
+  <div class="row"> 
+    <img src="images/square_table.jpg" class="card-img-top image-card-thumbnail" data-bs-toggle="modal" data-bs-target="#staticBackdrop5" alt="..."style="height: 10rem;">
+  </div>
+  <div class="row"> 
+    <div class="card-body text-center">
+      <h5 class="card-title">Square Table</h5>
+      <p class="fs-6">ROOTWOOD Sheesham Wood Writing Study & Computer Table...</p>
+      <div>
+        <span class="fw-bold fs-6 opacity-50">M.R.P:</span><span> </span><span class="text-decoration-line-through opacity-50">&#8377;1999</span>
+      </div>
+      <div>
+        <span class="fw-bold fs-6">Price:</span><span> </span><span>&#8377;999</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop5" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="row modal-content">
+      <div class=" row modal-header">
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class=" row modal-body">
+
+        <div class="col-lg-5"><img src="images/square_table.jpg" style="height:100%; width:100%;">
+        </div>
+
+        <div class="col-lg-7 col-12">
+          <div class="row">
+            <div class="col-lg-12 col-12 font-weight-bold" style="text-align:left;"><h3>Square Table</h3></div>
+          </div>
+
+          <div class="row ">
+            <div class="col-lg-7 col-7" style="text-align:left;"><span class="fw-bold align-middle">Product Rating:<span class="small-ratings align-middle">
+              <i class="fa fa-star rating-color"></i>
+              <i class="fa fa-star rating-color"></i>
+              <i class="fa fa-star rating-color"></i>
+              <i class="fa fa-star rating-color"></i>
+              <i class="fa fa-star"></i>
+            </span></span>             
+          </div>
+          <div class="col-lg-5 col-5" style="text-align:left;"><span class="fw-bold align-middle">Price:</span><span> </span><span class="align-middle">&#8377;999</span></div>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-12 col-12" style="text-align:left;">
+            <p id="desc">When choosing a solid-wood dining table there’re many different things to consider, from what type of wood to choose, to the finish you should apply. This will completely<span id="dots">...</span><span id="more"> depend on the look you’re trying to achieve in your space, but with so many options out there it can be hard to know where to start. We’ve pulled together everything you should know before buying a wooden dining table to give you a helping hand.</span><span class="fw-medium fs-6 text-primary "type="button" onclick="ReadmoreFunction()" id="moreBtn">Read more</span></p>
+          </div>
+        </div><br>
+        <div class="row">
+          <div class="col-lg-5 col-5" style="text-align:left;"><button type="button" class="btn btn-dark">Add To Cart</button></div>
+          <div class="col-lg-5 col-5" style="text-align:left;"><button type="button" class="btn btn-outline-secondary"><i class="fa fa-solid fa-heart" style="color: #fa0000;"></i>Favourite</button></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<div class="col-lg-3" >
+  <div class="row">
+    <img src="images/square3_table.jpg" class="card-img-top image-card-thumbnail" data-bs-toggle="modal" data-bs-target="#staticBackdrop6" alt="..."style="height: 10rem;">
+  </div>
+  <div class="row">
+    <div class="card-body text-center">
+      <h5 class="card-title">3-Square Table</h5>
+      <p class="fs-6">Wooden World Beautiful Wooden Coffee Table, Side Table/End... </p>
+      <div>
+        <span class="fw-bold fs-6 opacity-50">M.R.P:</span><span> </span><span class="text-decoration-line-through opacity-50">&#8377;1999</span>
+      </div>
+      <div>
+        <span class="fw-bold fs-6">Price:</span><span> </span><span>&#8377;999</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop6" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="row modal-content">
+      <div class=" row modal-header">
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class=" row modal-body">
+
+        <div class="col-lg-5"><img src="images/square3_table.jpg" style="height:100%; width:100%;">
+        </div>
+
+        <div class="col-lg-7 col-12">
+          <div class="row">
+            <div class="col-lg-12 col-12 font-weight-bold" style="text-align:left;"><h3>3-Square Table</h3></div>
+          </div>
+
+          <div class="row ">
+            <div class="col-lg-7 col-7" style="text-align:left;"><span class="fw-bold align-middle">Product Rating:<span class="small-ratings align-middle">
+              <i class="fa fa-star rating-color"></i>
+              <i class="fa fa-star rating-color"></i>
+              <i class="fa fa-star rating-color"></i>
+              <i class="fa fa-star rating-color"></i>
+              <i class="fa fa-star"></i>
+            </span></span>             
+          </div>
+          <div class="col-lg-5 col-5" style="text-align:left;"><span class="fw-bold align-middle">Price:</span><span> </span><span class="align-middle">&#8377;999</span></div>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-12 col-12" style="text-align:left;">
+            <p id="desc">When choosing a solid-wood dining table there’re many different things to consider, from what type of wood to choose, to the finish you should apply. This will completely<span id="dots">...</span><span id="more"> depend on the look you’re trying to achieve in your space, but with so many options out there it can be hard to know where to start. We’ve pulled together everything you should know before buying a wooden dining table to give you a helping hand.</span><span class="fw-medium fs-6 text-primary "type="button" onclick="ReadmoreFunction()" id="moreBtn">Read more</span></p>
+          </div>
+        </div><br>
+        <div class="row">
+          <div class="col-lg-5 col-5" style="text-align:left;"><button type="button" class="btn btn-dark">Add To Cart</button></div>
+          <div class="col-lg-5 col-5" style="text-align:left;"><button type="button" class="btn btn-outline-secondary"><i class="fa fa-solid fa-heart" style="color: #fa0000;"></i>Favourite</button></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<div class="col-lg-3" >
+  <div class="row">
+    <img src="images/circle_table.jpg" class="card-img-top image-card-thumbnail" data-bs-toggle="modal" data-bs-target="#staticBackdrop7" alt="..."style="height: 10rem;">
+  </div>
+  <div class="row">
+    <div class="card-body text-center">
+      <h5 class="card-title">Circle Table</h5>
+      <p class="fs-6">Star Fab’s Matt Finish Laminated Plywood Coffee Table/Side...</p>
+      <div>
+        <span class="fw-bold fs-6 opacity-50">M.R.P:</span><span> </span><span class="text-decoration-line-through opacity-50">&#8377;1999</span>
+      </div>
+      <div>
+        <span class="fw-bold fs-6">Price:</span><span> </span><span>&#8377;999</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop7" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="row modal-content">
+      <div class=" row modal-header">
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class=" row modal-body">
+
+        <div class="col-lg-5"><img src="images/circle_table.jpg" style="height:100%; width:100%;">
+        </div>
+
+        <div class="col-lg-7 col-12">
+          <div class="row">
+            <div class="col-lg-12 col-12 font-weight-bold" style="text-align:left;"><h3>Circle Table</h3></div>
+          </div>
+
+          <div class="row ">
+            <div class="col-lg-7 col-7" style="text-align:left;"><span class="fw-bold align-middle">Product Rating:<span class="small-ratings align-middle">
+              <i class="fa fa-star rating-color"></i>
+              <i class="fa fa-star rating-color"></i>
+              <i class="fa fa-star rating-color"></i>
+              <i class="fa fa-star rating-color"></i>
+              <i class="fa fa-star"></i>
+            </span></span>             
+          </div>
+          <div class="col-lg-5 col-5" style="text-align:left;"><span class="fw-bold align-middle">Price:</span><span> </span><span class="align-middle">&#8377;999</span></div>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-12 col-12" style="text-align:left;">
+            <p id="desc">When choosing a solid-wood dining table there’re many different things to consider, from what type of wood to choose, to the finish you should apply. This will completely<span id="dots">...</span><span id="more"> depend on the look you’re trying to achieve in your space, but with so many options out there it can be hard to know where to start. We’ve pulled together everything you should know before buying a wooden dining table to give you a helping hand.</span><span class="fw-medium fs-6 text-primary "type="button" onclick="ReadmoreFunction()" id="moreBtn">Read more</span></p>
+          </div>
+        </div><br>
+        <div class="row">
+          <div class="col-lg-5 col-5" style="text-align:left;"><button type="button" class="btn btn-dark">Add To Cart</button></div>
+          <div class="col-lg-5 col-5" style="text-align:left;"><button type="button" class="btn btn-outline-secondary"><i class="fa fa-solid fa-heart" style="color: #fa0000;"></i>Favourite</button></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<div class="col-lg-3" >
+  <div class="row">
+    <img src="images/round_table.jpg" class="card-img-top image-card-thumbnail" data-bs-toggle="modal" data-bs-target="#staticBackdrop8" alt="..."style="height: 10rem;">
+  </div>
+  <div class="row">
+    <div class="card-body text-center">
+      <h5 class="card-title">Round Table</h5>
+      <p class="fs-6">UHUD CRAFTS Beautiful Antique Wooden Fold-able Side Table/End...</p>
+      <div>
+        <span class="fw-bold fs-6 opacity-50">M.R.P:</span><span> </span><span class="text-decoration-line-through opacity-50">&#8377;1999</span>
+      </div>
+      <div>
+        <span class="fw-bold fs-6">Price:</span><span> </span><span>&#8377;999</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop8" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="row modal-content">
+      <div class=" row modal-header">
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class=" row modal-body">
+
+        <div class="col-lg-5"><img src="images/round_table.jpg" style="height:100%; width:100%;">
+        </div>
+
+        <div class="col-lg-7 col-12">
+          <div class="row">
+            <div class="col-lg-12 col-12 font-weight-bold" style="text-align:left;"><h3>Round Table</h3></div>
+          </div>
+
+          <div class="row ">
+            <div class="col-lg-7 col-7" style="text-align:left;"><span class="fw-bold align-middle">Product Rating:<span class="small-ratings align-middle">
+              <i class="fa fa-star rating-color"></i>
+              <i class="fa fa-star rating-color"></i>
+              <i class="fa fa-star rating-color"></i>
+              <i class="fa fa-star rating-color"></i>
+              <i class="fa fa-star"></i>
+            </span></span>             
+          </div>
+          <div class="col-lg-5 col-5" style="text-align:left;"><span class="fw-bold align-middle">Price:</span><span> </span><span class="align-middle">&#8377;999</span></div>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-12 col-12" style="text-align:left;">
+            <p id="desc">When choosing a solid-wood dining table there’re many different things to consider, from what type of wood to choose, to the finish you should apply. This will completely<span id="dots">...</span><span id="more"> depend on the look you’re trying to achieve in your space, but with so many options out there it can be hard to know where to start. We’ve pulled together everything you should know before buying a wooden dining table to give you a helping hand.</span><span class="fw-medium fs-6 text-primary "type="button" onclick="ReadmoreFunction()" id="moreBtn">Read more</span></p>
+          </div>
+        </div><br>
+        <div class="row">
+          <div class="col-lg-5 col-5" style="text-align:left;"><button type="button" class="btn btn-dark">Add To Cart</button></div>
+          <div class="col-lg-5 col-5" style="text-align:left;"><button type="button" class="btn btn-outline-secondary"><i class="fa fa-solid fa-heart" style="color: #fa0000;"></i>Favourite</button></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+</div>
+</div><br>
+
+
+<div class="container">
+  <div class="row ">
+    <div class="col-12" style="text-align:left;"><h3 class="fs-3 text-start">Customer Reviews</h3>
+    </div>
+  </div>
+</div><br>
+
+<div class="container">
+
+  <div class="row justify-content-between">
+    <div class="col-lg-6 col-6 fw-bold" style="text-align:left; ">Ankita Tripathi
+      <div class="small-ratings">
+        <i class="fa fa-star rating-color"></i>
+        <i class="fa fa-star rating-color"></i>
+        <i class="fa fa-star rating-color"></i>
+        <i class="fa fa-star"></i>
+        <i class="fa fa-star"></i>
+      </div>
+    </div>
+    <div class="col-lg-6 col-6 fw-bold" style="text-align:right; ">Date:12-12-2022</div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-12 col-12 border rounded border-bottom-0 bg-body-secondary" style="text-align:left;">
+      <p>There are many defects poor finishing Even the replacement product has defects No aesthetic sense put the sticker right in front <span id="dots">...</span><span id="more">  Quality check for defects can save the trouble for customer and seller.</span><span class="fw-medium fs-6 text-primary "type="button" onclick="ReadmoreFunction()" id="moreBtn">Read more</span></p>
+    </div>
+  </div><br>
+
+  <div class="row justify-content-between">
+    <div class="col-lg-6 col-6 fw-bold" style="text-align:left; ">Priyanka Singh
+      <div class="small-ratings">
+        <i class="fa fa-star rating-color"></i>
+        <i class="fa fa-star rating-color"></i>
+        <i class="fa fa-star rating-color"></i>
+        <i class="fa fa-star rating-color"></i>
+        <i class="fa fa-star"></i>
+      </div>
+    </div>
+    <div class="col-lg-6 col-6 fw-bold" style="text-align:right; ">Date:15-12-2022</div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-12 col-12 border rounded border-bottom-0 bg-body-secondary" style="text-align:left;">
+      <p>I am absolutely thrilled with my new wooden table! The craftsmanship is impeccable, and it adds a touch of<span id="dots">...</span><span id="more">  elegance to my dining room.</span><span class="fw-medium fs-6 text-primary "type="button" onclick="ReadmoreFunctio()" id="moreBtn">Read more</span></p>
+    </div>
+  </div><br>
+
+  <div class="row justify-content-between">
+    <div class="col-lg-6 col-6 fw-bold" style="text-align:left; ">Suman Kashyap
+      <div class="small-ratings">
+        <i class="fa fa-star rating-color"></i>
+        <i class="fa fa-star rating-color"></i>
+        <i class="fa fa-star rating-color"></i>
+        <i class="fa fa-star rating-color"></i>
+        <i class="fa fa-star rating-color"></i>
+      </div>
+    </div>
+    <div class="col-lg-6 col-6 fw-bold" style="text-align:right; ">Date:20-12-2022</div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-12 col-12 border rounded border-bottom-0 bg-body-secondary" style="text-align:left;">
+      <p>I recently bought this wooden table for my study, and overall, I'm quite satisfied with it. The design is simple yet stylish, and it fits perfectly in the space I had in mind. The table <span id="dots">...</span><span id="more"> feels solid and stable, and the wood has a nice natural look.</span><span class="fw-medium fs-6 text-primary "type="button" onclick="ReadmoreFunction()" id="moreBtn">Read more</span></p>
+    </div>
+  </div><br>
+
+  <div class="row justify-content-between">
+    <div class="col-lg-6 col-6 fw-bold" style="text-align:left; ">Shweta
+      <div class="small-ratings">
+        <i class="fa fa-star rating-color"></i>
+        <i class="fa fa-star rating-color"></i>
+        <i class="fa fa-star rating-color"></i>
+        <i class="fa fa-star rating-color"></i>
+        <i class="fa fa-star rating-color"></i>
+      </div>
+    </div>
+    <div class="col-lg-6 col-6 fw-bold" style="text-align:right; ">Date:25-12-2022</div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-12 col-12 border rounded border-bottom-0 bg-body-secondary" style="text-align:left;">
+      <p>This wooden table is a true gem! The quality is outstanding, and it exceeded my expectations. The table arrived well-packaged and in perfect condition. The wood<span id="dots">...</span><span id="more">  has a rich, warm tone that adds character to my living room.</span><span class="fw-medium fs-6 text-primary "type="button" onclick="ReadmoreFunction()" id="moreBtn">Read more</span></p>
+    </div>
+  </div><br>
+
+  <div class="row justify-content-between">
+    <div class="col-lg-6 col-6 fw-bold" style="text-align:left; ">Kshma Mittal
+      <div class="small-ratings">
+        <i class="fa fa-star rating-color"></i>
+        <i class="fa fa-star rating-color"></i>
+        <i class="fa fa-star rating-color"></i>
+        <i class="fa fa-star rating-color"></i>
+        <i class="fa fa-star"></i>
+      </div>
+    </div>
+    <div class="col-lg-6 col-6 fw-bold" style="text-align:right; ">Date:26-12-2022</div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-12 col-12 border rounded border-bottom-0 bg-body-secondary" style="text-align:left;">
+      <p>I purchased this wooden table for my kitchen, and I'm quite pleased with it. The table has a nice rustic charm that complements the overall decor of the room. It was<span id="dots">...</span><span id="more">  easy to assemble, and the instructions were clear.</span><span class="fw-medium fs-6 text-primary " type="button"onclick="ReadmoreFunction()" id="moreBtn">Read more</span></p>
+    </div>
+  </div><br>
+</div>
+
+<div class="container">
+ <div class="row">
+  <div class="col-lg-12 col-12 bg-secondary" style="height:60px;"></div>
+</div>
+
+<div class="row">
+  <div class="col-lg-12 col-12 bg-dark">
+    <div class="row align-items-center text-center" style="height:150px;">
+      <div class="col-lg-4 col-4"></div>
+      <div class="col-lg-4 col-4 ">
+        <a class="navbar-brand" href="#"><img src="images/logo.png" alt="Logo" width="30" height="24" ><span>   </span><span style="color:white;"class="align-middle">Buyonline</span></a>
+      </div>
+      <div class="col-lg-4 col-4"></div>
+    </div>
+  </div>
+</div>
+</div>
+
+
+
+
+<script type="text/javascript">
+  
+   let element = document.getElementsByClassName("image-card-thumbnail")[0];
+   element.addEventListener("click", modalShow);
+
+
+   function modalShow(event) {
+     console.log(event.target.dataset.id); // index
+
+     // find modal element img ? #xyz
+     // update src url of the above tag with the data url
+
+     // create function of imageId, imageUrl
+     // let loadFile = function(event)
+     const image = document.getElementById('xyz1');
+      image.src= "https://www.ikea.com/in/en/images/products/stefan-chair-brown-black__0727320_pe735593_s5.jpg?f=s";
+
+   }
+
+  //// when user click on readmore button...
+
+  function ReadmoreFunction() {
+    let dots = document.getElementById("dots");
+    let moreText = document.getElementById("more");
+    let btnText = document.getElementById("moreBtn");
+
+    if (dots.style.display === "none") {
+      dots.style.display = "inline";
+      btnText.innerHTML = "Read more"; 
+      moreText.style.display = "none";
+    } else {
+      dots.style.display = "none";
+      btnText.innerHTML = "Read less"; 
+      moreText.style.display = "inline";
+    }
+  }
+
+</script>
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+
+
+</body>
+</html>

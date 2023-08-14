@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Sample HTML Form</title>
+  <style>
+    </style>
+</head>
+<body>
+  <h2>radio button</h2>
+
+  <form id="MyForm" onsubmit="return false">
+
+    <label id="voting">Voting Rights:</label><br>
+    <input class="voting" type="radio" name="voting" value="yes"> Yes I am 18 +
+    <input class="voting" type="radio" name="voting" value="no"> No I am not eligible<br>
+
+    <label id="gender">Gender:</label><br>
+    <input class="gender" type="radio" name="gender" value="male"> Male
+    <input class="gender" type="radio" name="gender" value="female"> Female<br>
+
+    <input type="submit" value="Submit" onclick="getFormValue()"><br>
+
+
+    </form>
+    <script type="text/javascript">
+
+      function getFormValue(){
+      var voting = document.querySelector("input[type=radio][class=voting]:checked")
+      if(voting){
+      console.log(voting.value);
+      }
+      
+      var gender = document.querySelector("input[type=radio][class=gender]:checked");
+      if(gender){
+      console.log(gender.value);
+      }
+     }
+// -----------------------------------------------------------------------------------------
+     function consoleData(event){
+        console.log(event);
+        console.log("click on voiting radio button");
+
+      }
+
+      function mouseFunction(event){
+        console.log("mouse over on Voting Radio Button");
+      }
+
+      let element = document.getElementsByClassName("voting")[0];
+      document.getElementsByClassName("voting")[0].addEventListener("click", consoleData);
+      element.addEventListener("mouseover", mouseFunction);
+
+      let element1 = document.getElementsByClassName("voting")[1];
+      document.getElementsByClassName("voting")[1].addEventListener("click", consoleData);
+      element1.addEventListener("mouseover", mouseFunction);
+
+      window.addEventListener("resize", function(){
+        document.getElementById("message").value = "resizing window!!!"; // why value instead of innerHtml ?
+      });
+
+      </script>
+</body>
+</html>

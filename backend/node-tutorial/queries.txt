@@ -1,0 +1,21 @@
+{emailId: "abc@gmail.com"}
+
+
+{emailId: {$regex: "abc"}}
+
+{emailId: {$regex: /poq/i}}
+{emailId: {$regex: "poq", $options: 'i'}}
+
+
+{$and: [{emailId: {$regex: "poq", $options: 'i'}}, {age: {$gte: 32}}]}
+
+{$and: [{emailId: {$regex: "poq", $options: 'i'}}, {name: {$regex: "poq", $options: 'i'}}]}
+
+
+Projection : n
+{name: 1, emailId: 1}
+
+
+
+{ $and: [ { name: {$regex: "", $options: 'i'}}, {description: {$regex: "", $options: 'i'}} ] }
+{ $or: [ { name: {$regex: "Sneaker", $options: 'i'}}, {description: {$regex: "Sneaker", $options: 'i'}} ] }

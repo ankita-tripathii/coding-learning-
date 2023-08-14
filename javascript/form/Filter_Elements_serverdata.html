@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Sample HTML Form</title>
+  <style>
+#filter-container {
+    margin-bottom: 20px;
+}
+
+#data-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.item {
+    width: 200px;
+    padding: 10px;
+    margin: 10px;
+    border: 1px solid #ccc;
+}
+
+</style>
+</head>
+<body>
+  <h2>Filter Div Eliment</h2>
+
+<div id="filter-container">
+        <label for="category-filter">Filter by Category:</label>
+        <select id="category-filter">
+            <option value="all">All</option>
+            <option value="tshirt">T-Shirt</option>
+            <option value="pant">Pant</option>
+            <option value="trouser">Trouser</option>
+            <option value="top">Top</option>
+        </select>
+    </div>
+    
+    <div id="data-container">
+        <!-- JSON data will be dynamically populated here -->
+    </div>
+
+
+<script src="api/Filter_Elements_data.json">
+  </script>
+
+
+<script type="text/javascript">
+
+const categoryFilter = document.getElementById('category-filter');
+const dataContainer = document.getElementById('data-container');
+
+
+// Initial data rendering
+renderData(server_data.data);
+
+
+// Function to render the filtered data on the page
+function renderData(data) {
+    dataContainer.innerHTML = '';
+
+    data.forEach(item => {
+        const itemElement = document.createElement('div');
+        itemElement.classList.add('item');
+        itemElement.innerHTML = `
+            <h3>${item.detail.name}</h3>
+            <p>Category: ${item.category}</p>
+            <p>Price: $${item.detail.price}</p>
+        `;
+        dataContainer.appendChild(itemElement);
+    });
+}
+
+// Function to render the data based on the selected category
+function filterData() {
+    const selectedCategory = categoryFilter.value;
+    const filteredData = (selectedCategory === 'all') ? server_data.data : server_data.data.filter(item => item.category === selectedCategory);
+    renderData(filteredData);
+}
+
+categoryFilter.addEventListener('change', filterData);
+
+
+
+</script>
+</body>
+</html>

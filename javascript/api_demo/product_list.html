@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <title>API Product Detail Page</title>
+    <style type="text/css">
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+
+    html{
+      font-size: 60%;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body{
+      font-size: 1.6rem;
+    }
+
+    #product_list {
+     display: flex;
+     flex-wrap: wrap;
+     padding: 2rem 2rem;
+     width: 100%;
+     justify-content: center;
+   }
+
+   .product {
+    float: left;
+    color: black;
+    width: 230px;
+    height: 450px;
+    text-align: left;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+
+  .product img{
+    width: 200px;
+    height: 200px;
+    justify-items: center;
+  }
+
+  .product-content{
+    padding: 0.2rem;
+    background-color:#e6e6e6;
+  }
+
+  .product.product-title{
+    font-size: 2rem;
+  }
+
+  .product-description{
+   text-align: justify;
+  }
+
+   .product-title,
+   .product-priceContainer,
+   .product-category{
+    padding: 0.5rem 0;
+   }
+  
+   .product-priceContainer{
+    
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+   }
+
+   .product-rating{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+   }
+
+   .add-to-cart{
+    background-color: #0080ff;
+    width: 5rem;
+    height: 5rem;
+    align-items: center;
+    justify-content: center;
+    padding:1rem;
+    color:white;
+    border-radius: 1rem;
+   }
+
+   .add-to-cart ion-icon {
+    font-size: 3rem;
+   }
+
+    </style>
+  </head>
+  <body>
+
+    <div class="container gap-2 d-grid">
+
+
+    <div class="container sticky-top">
+      <div class="row">
+        <nav class="navbar bg-body-tertiary navbar-expand-lg bg-dark border-bottom border-bottom-dark" data-bs-theme="dark">
+
+        <div class="col-lg-4 col-4">
+        </div>
+
+        <div class="col-lg-4 col-4">
+        </div>
+
+        <div class="col-lg-4 col-4">
+          
+                <a class="nav-link d-inline-block"  href="product_list.html"><span style="color:white;">Product List</span></a>
+                     
+                <a class="nav-link d-inline-block" href="manage_product.html"><span style="color:white;">Manage Products</span></a>              
+          </div>
+       </nav>
+      </div>
+    </div> <!-- container sticky-top -->
+
+    <div class="container">
+      <div class="row bg-transparent">
+
+        <!-- <div class="col-lg-4 col-4">
+        </div>
+
+        <div class="col-lg-4 col-4">
+        </div> -->
+
+        <div class="col-lg-12 col-12 d-grid gap-2 d-sm-flex justify-content-md-end">
+
+           <div class="btn-group">
+            <button type="button" class="btn btn-primary btn-outline-white">Page</button>
+            <button type="button" class="btn btn-primary btn-outline-white dropdown-toggle " data-bs-toggle="dropdown">
+              <span class="visually-hidden">Toggle Dropdown</span>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end">
+              
+            </ul>
+          </div>
+
+          <div class="btn-group">
+          <button class="btn btn-primary" type="button">Sorting</button>
+          <button type="button" class="btn btn-primary btn-outline-white dropdown-toggle " data-bs-toggle="dropdown">
+              <span class="visually-hidden">Toggle Dropdown</span>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-end">
+              <li><a class="dropdown-item" href="" onclick="sortProducts('0')">Sort A-Z</a></li>
+              <li><a class="dropdown-item" href="#" onclick="sortProducts('1')">Sort Z-A</a></li>
+            </ul>
+          </div>
+
+        </div>           
+      </div>
+    </div>
+
+    <div class="container" id="product_list">
+
+    </div>   
+    </div>
+
+    <script type="text/javascript">
+
+
+
+      let productList; // productList
+      fetchProductData();
+
+    function fetchProductData() {
+          fetch('https://fakestoreapi.com/products')
+                  .then(res=>res.json())
+                  .then(json=> {
+                    
+                    product_detail(json);
+
+                  })
+                }
+
+
+            function product_detail(json) {
+            const productElement = document.getElementById('product_list');  
+                  productList= json;
+                  console.log(productList);
+                   for (let i = 0; i < productList.length; i++) {
+                  let product_info = productList[i];
+                  let title = productList[i]["title"];
+                  let description = productList[i]["description"];
+                  let cellHtmlContent = `
+                   <div class="product">
+
+                   <div class="product-img">
+                   <img src=${productList[i]["image"]}>
+                   </div>
+                   
+                   <div class="product-content">
+
+                   <div class="product-title">
+                   <h2>${title.length> 20 ? title.substring(0,20).concat('...') : title}</h2>
+                   </div>
+
+                   <div class="product-rating">
+                   <h4> Rating: ${productList[i]["rating"]["rate"]}</h4>
+                   <h4> Count: ${productList[i]["rating"]["count"]}</h4>
+                   </div>
+
+                   <div class="product-category">
+                   <h4>${productList[i]["category"]}</h4>
+                   </div>
+
+                   <div class="product-description">
+                   <p>${description.length> 80 ? description.substring(0,80).concat('...more') : description}</p>
+                   </div>
+
+                   <div class="product-priceContainer">
+                   <h3 class="product-price"> Price: $${productList[i]["price"]}</h3>
+                   <a href="#" data-product-ID=${productList[i]["id"]} class="add-to-cart"><ion-icon name="cart-outline"></ion-icon></a>
+                   </div>
+                   </div>
+                   </div>
+                  `;
+                  product_list.innerHTML += cellHtmlContent
+
+                    }    
+                  }  // product_detail ends here                 
+
+
+                 function sortProducts(sortType) {
+
+
+                    if (sortType === "0") {
+                       // Sort A-Z using bubble sort
+                      for (let i = 0; i < productList.length - 1; i++) {
+                        for (let j = 0; j < productList.length - i - 1; j++) {
+                          if (productList[j].title.localeCompare(productList[j + 1].title) > 0) { 
+                             // Swap the elements if they are in the wrong order
+                            const temp = productList[j];
+                            productList[j] = productList[j + 1];
+                            productList[j + 1] = temp;
+                          }
+                        }
+                      }
+                    }
+
+                    else if (sortType === "1") {
+                       // Sort Z-A using bubble sort
+                      for (let i = 0; i < productList.length - 1; i++) {
+                        for (let j = 0; j < productList.length - i - 1; j++) {
+                          if (productList[j].title.localeCompare(productList[j + 1].title) < 0) {
+                             // Swap the elements if they are in the wrong order
+                            const temp = productList[j];
+                            productList[j] = productList[j + 1];
+                            productList[j + 1] = temp;
+                          }
+                        }
+                      }
+                    }
+
+                     // Clear the product list before re-rendering
+                    const productElement = document.getElementById('product_list');
+                    productElement.innerHTML = '';
+
+                     // Re-render the sorted products
+                    product_detail(productList);
+                  }
+
+
+
+
+
+
+
+
+
+
+                 //  function sortProducts(sortType) {
+
+                    
+
+                 //    if (sortType === "0") {
+                 //   // Sort A-Z
+                 //      productElement.sort((a, b) => a.title.localeCompare(b.title));
+                 //    }
+                 //    else if (sortType === "1") {
+                 //   // Sort Z-A
+                 //      productElement.sort((a, b) => b.title.localeCompare(a.title));
+                 //    }
+
+                 // // Clear the product list before re-rendering
+                 //    const productList = document.getElementById('product_list');
+                 //    productList.innerHTML = '';
+
+                 // // Re-render the sorted products
+                 //    product_detail(productElement);
+                 //  }
+
+
+
+ // event.preventDefault();
+
+
+        // function sortProducts(order) { // asc, desc chaange to 0 , 1
+        //       const productList = document.getElementById('product_list');
+        //       const products = Array.from(productList.children);
+
+        //       //  high level functions : Filter, Map, Sort, Reduce
+        //       products.sort((a, b) => {
+        //         const titleA = a.querySelector('.product-title h2').textContent;
+        //         const titleB = b.querySelector('.product-title h2').textContent;
+
+        //         if (order === 'asc') {
+        //           return titleA.localeCompare(titleB); // true  false
+        //         } else if (order === 'desc') {
+        //           return titleB.localeCompare(titleA);
+        //         }
+        //     });
+        //   // Append the sorted products to the product list
+        //   products.forEach(product => {
+        //     productList.appendChild(product);
+        //   });
+        // } // sortProducts function ends here
+
+
+    </script>
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+    
+  </body>
+</html>
